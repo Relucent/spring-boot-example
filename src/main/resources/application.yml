@@ -1,0 +1,25 @@
+
+server: 
+ port: ${port:80}
+ session-timeout: 3600
+ context-path: /
+ servlet-path: /
+
+
+spring: 
+ mvc:
+  view: 
+   prefix: /WEB-INF/jsp/ 
+   suffix: .jsp 
+
+
+application: 
+ message: Hello Spring-Boot
+ model-name: YYL
+
+
+#(TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)
+logging: 
+ level: 
+  root: ERROR
+  org.springframework: ERROR

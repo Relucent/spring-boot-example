@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring-Boot-Example</title>
+<style type="text/css">
+.layout-side {
+	position: fixed
+}
+
+.layout-body {
+	position: absolute;
+	min-width: 300px;
+	left: 200px;
+}
+</style>
+</head>
+<body>
+	<h1>Hello Spring Boot</h1>
+	<ul class="layout-side">
+		<li><a href="/hello/welcome" target="frame">/hello/welcome</a></li>
+		<li><a href="/hello/1" target="frame">/hello/1</a></li>
+	</ul>
+	<iframe class="layout-body" name="frame" src="about:blank"> </iframe>
+</body>
+</html>
