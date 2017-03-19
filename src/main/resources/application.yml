@@ -25,6 +25,8 @@ server:
  session-timeout: 30
  context-path: /
  servlet-path: /
+ tomcat: 
+  basedir: target/tomcat
 
 
 spring: 
@@ -32,6 +34,15 @@ spring:
   view: 
    prefix: /WEB-INF/jsp/ 
    suffix: .jsp 
+
+ thymeleaf: 
+  prefix: classpath:/templates/
+  suffix: .html
+  mode: HTML5
+  encoding: UTF-8
+  content-type: text/html
+  cache: false
+
 
 
 application: 
@@ -43,6 +54,5 @@ logging:
  level: 
   root: ERROR
   org.springframework: ERROR
-
 
 ... 
