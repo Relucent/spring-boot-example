@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring Boot 配置</title>
+
+</head>
+<body>
+
+	<h1>SpringBoot 配置文件说明</h1>
+
+	<div>默认配置文件：application.yml 或 application.properties</div>
+	<div>配置文件中属性允许使用占位符例如 ${port:80}，运行时使用 Java -jar app.jar --server.port=8081 方式来传递参数</div>
+
+	<table class="data-grid">
+
+		<tr>
+			<td>server.port</td>
+			<td>服务端口，默认为8080</td>
+		</tr>
+		<tr>
+			<td>server.port</td>
+			<td>最大超时时间(分钟)，默认为30</td>
+		</tr>
+		<tr>
+			<td>server.address</td>
+			<td>该服务绑定IP地址，启动服务器时如本机不是该IP地址则抛出异常启动失败，只有特殊需求的情况下才配置</td>
+		</tr>
+		<tr>
+			<td>server.tomcat.max-threads</td>
+			<td>tomcat最大线程数，默认为200</td>
+		</tr>
+		<tr>
+			<td>server.tomcat.uri-encoding</td>
+			<td>tomcat编码，默认为UTF-8</td>
+		</tr>
+		<tr>
+			<td>server.tomcat.basedir</td>
+			<td>存放Tomcat的日志、Dump等文件的临时文件夹，默认为系统的tmp文件夹（如：C:\Users\Admin\AppData\Local\Temp）</td>
+		</tr>
+		<tr>
+			<td>server.tomcat.access-log-enabled</td>
+			<td>Tomcat-Access日志是否开启，true|false</td>
+		</tr>
+		<tr>
+			<td>server.tomcat.access-log-pattern</td>
+			<td>Tomcat-Access日志格式</td>
+		</tr>
+		<tr>
+			<td>server.tomcat.accesslog.directory</td>
+			<td>Tomcat-Access日志目录，默认在basedir/logs</td>
+		</tr>
+		<tr>
+			<td>logging.path</td>
+			<td>日志文件目录，；例如 D:/spring-boot-example/logs</td>
+		</tr>
+		<tr>
+			<td>logging.file</td>
+			<td>日志文件名称，默认为spring.log</td>
+		</tr>
+		<tr>
+			<td>logging.config</td>
+			<td>日志配置文件，默认为classpath:logback.xml (logback的配置文件)</td>
+		</tr>
+		<tr>
+			<td>logging.level.*</td>
+			<td>日志级别 (TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF)</td>
+		</tr>
+		<tr>
+			<td>logging.level.root</td>
+			<td>root日志的级别</td>
+		</tr>
+		<tr>
+			<td>logging.level.org.springframework</td>
+			<td>org.springframework的日志级别，默认是DEBUG</td>
+		</tr>
+	</table>
+</body>
+</html>
+<!-- YYL 2017 03 19 -->
