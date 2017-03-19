@@ -1,4 +1,4 @@
-#SpringBoot 配置文件说明  
+## SpringBoot 配置文件说明  
 
 默认配置文件：application.yml 或 application.properties  
 配置文件中属性允许使用占位符，例如 ${port:80}，运行时使用 Java -jar app.jar --server.port=8081 方式来传递参数  
