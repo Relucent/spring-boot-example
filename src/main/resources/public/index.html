@@ -10,16 +10,17 @@
 
 .layout-body {
 	position: absolute;
-	min-width: 300px;
-	left: 200px;
+	width: 60%;
+	height: 80%;
+	left: 30%;
 }
 </style>
 </head>
 <body>
 	<h1>Hello Spring Boot</h1>
 	<ul class="layout-side">
-		<li><a href="/hello/welcome" target="frame">/hello/welcome</a></li>
 		<li><a href="/hello/1" target="frame">/hello/1</a></li>
+		<li><a href="/thymeleaf/welcome" target="frame">/thymeleaf/welcome</a></li>
 	</ul>
 	<iframe class="layout-body" name="frame" src="about:blank"> </iframe>
 </body>

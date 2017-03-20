@@ -30,10 +30,10 @@ server:
 
 
 spring: 
- mvc:
-  view: 
-   prefix: /WEB-INF/jsp/ 
-   suffix: .jsp 
+# mvc:
+#  view: 
+#   prefix: /WEB-INF/jsp/ 
+#   suffix: .jsp 
 
  thymeleaf: 
   prefix: classpath:/templates/
