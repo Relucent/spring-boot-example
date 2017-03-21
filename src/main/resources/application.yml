@@ -46,6 +46,7 @@ spring:
 
 
 application: 
+ name: 'Example'
  message: Hello Spring-Boot
  model-name: YYL
 
