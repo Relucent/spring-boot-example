@@ -1,0 +1,142 @@
+@charset "utf-8";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	font-family: "Microsoft YaHei", arial
+}
+
+ul, li, ol {
+	list-style: none;
+}
+
+input, button, textarea {
+	outline: none
+}
+
+header, section, footer, aside, nav, main, article, figure {
+	display: block;
+}
+
+em, i {
+	font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+	font-weight: normal;
+}
+
+textarea {
+	resize: none;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+::-webkit-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+	border-radius: 999px;
+	border: 5px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-webkit-scrollbar-thumb {
+	min-height: 20px;
+	background-clip: content-box;
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+::-o-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+::-o-scrollbar-track, ::-o-scrollbar-thumb {
+	border-radius: 999px;
+	border: 5px solid transparent;
+}
+
+::-o-scrollbar-track {
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-o-scrollbar-thumb {
+	min-height: 20px;
+	background-clip: content-box;
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-o-scrollbar-corner {
+	background: transparent;
+}
+
+::-ms-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+::-ms-scrollbar-track, ::-ms-scrollbar-thumb {
+	border-radius: 999px;
+	border: 5px solid transparent;
+}
+
+::-ms-scrollbar-track {
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-ms-scrollbar-thumb {
+	min-height: 20px;
+	background-clip: content-box;
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-ms-scrollbar-corner {
+	background: transparent;
+}
+
+::-moz-scrollbar {
+	width: 14px;
+	height: 14px;
+}
+
+::-moz-scrollbar-track, ::-moz-scrollbar-thumb {
+	border-radius: 999px;
+	border: 5px solid transparent;
+}
+
+::-moz-scrollbar-track {
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-moz-scrollbar-thumb {
+	min-height: 20px;
+	background-clip: content-box;
+	box-shadow: 0 0 0 5px rgba(0, 0, 0, .2) inset;
+}
+
+::-moz-scrollbar-corner {
+	background: transparent;
+}
