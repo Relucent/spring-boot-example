@@ -1,5 +1,6 @@
-### SpringBoot DataSource 配置说明  
+﻿## SpringBoot DataSource 配置说明  
 
+### DataSource 配置
 属性 | 说明  
 ------------ | -------------
 spring.dao.exceptiontranslation.enabled | 是否开启PersistenceExceptionTranslationPostProcessor，默认为true  
@@ -65,7 +66,7 @@ spring.datasource.remove-abandoned | 指定当连接超过废弃超时时间时�
 spring.datasource.remove-abandoned-timeout | 指定连接应该被废弃的时间  
 spring.datasource.rollback-on-return | 在归还连接时，是否回滚等待中的事务  
 spring.datasource.schema | 指定Schema (DDL)脚本  
-spring.datasource.separator指定初始化脚本的语句分隔符，默认: ;  
+spring.datasource.separator | 指定初始化脚本的语句分隔符，默认: ;  
 spring.datasource.sql-script-encoding | 指定SQL scripts编码  
 spring.datasource.suspect-timeout | 指定打印废弃连接前的超时时间  
 spring.datasource.test-on-borrow | 当从连接池借用连接时，是否测试该连接  
@@ -85,4 +86,54 @@ spring.datasource.validation-query-timeout | 指定连接校验查询的超时�
 spring.datasource.validation-timeout | 设定连接校验的超时时间，当使用Hikari connection pool时指定  
 spring.datasource.validator-class-name | 用来测试查询的validator全限定名  
 spring.datasource.xa.data-source-class-name | 指定数据源的全限定名  
-spring.datasource.xa.properties | 指定传递给XA data source的属性 
+spring.datasource.xa.properties | 指定传递给XA data source的属性  
+
+### JPA配置  
+属性 | 说明  
+------------ | -------------
+spring.jpa.database | 指定目标数据库  
+spring.jpa.database-platform | 指定目标数据库的类型  
+spring.jpa.generate-ddl | 是否在启动时初始化schema，默认为false  
+spring.jpa.hibernate.ddl-auto | 指定DDL mode (none, validate, update, create, create-drop). 当使用内嵌数据库时，默认是create-drop，否则为none  
+spring.jpa.hibernate.naming-strategy | 指定命名策略  
+spring.jpa.open-in-view | 是否注册OpenEntityManagerInViewInterceptor，绑定JPA EntityManager到请求线程中，默认为: true  
+spring.jpa.properties | 添加额外的属性到JPA provider  
+spring.jpa.show-sql | 是否开启sql的log，默认为: false  
+
+
+### Jooq 配置  
+属性 | 说明  
+------------ | -------------  
+spring.jooq.sql-dialect | 指定JOOQ使用的SQLDialect，比如POSTGRES  
+
+
+### h2 配置  
+属性 | 说明  
+------------ | -------------  
+spring.h2.console.enabled | 是否开启控制台，默认为false  
+spring.h2.console.path | 指定控制台路径，默认为: /h2-console  
+
+### JTA 配置  
+属性 | 说明  
+------------ | -------------  
+spring.jta.default-transaction-timeout | 设定默认的事务超时时间，默认为60  
+spring.jta.disable-jmx | 是否禁用jmx，默认为false  
+spring.jta.enabled | 是否开启JTA support，默认为: true  
+spring.jta.exception-analyzer | 设置指定的异常分析类  
+spring.jta.filter-log-status | 使用Bitronix Transaction Manager时，是否写mandatory logs，开启的话，可以节省磁盘空间，但是调试会复杂写，默认为false  
+spring.jta.force-batching-enabled | 使用Bitronix Transaction Manager时，是否批量写磁盘，默认为true  
+spring.jta.forced-write-enabled | 使用Bitronix Transaction Manager时，是否强制写日志到磁盘，默认为true  
+spring.jta.graceful-shutdown-interval | 当使用Bitronix Transaction Manager，指定shutdown时等待事务结束的时间，超过则中断，默认为60  
+spring.jta.jndi-transaction-synchronization-registry-name | 当使用Bitronix Transaction Manager时，在JNDI下得事务同步registry，默认为: java:comp/TransactionSynchronizationRegistry  
+spring.jta.jndi-user-transaction-name | 指定在JNDI使用Bitronix Transaction Manager的名称，默认:java:comp/UserTransaction  
+spring.jta.journal | 当使用Bitronix Transaction Manager，指定The journal是否disk还是null还是一个类的全限定名，默认disk  
+spring.jta.log-dir | 事物日志目录
+spring.jta.log-part1-filename | 指定The journal fragment文件1的名字，默认: btm1.tlog  
+spring.jta.log-part2-filename | 指定The journal fragment文件2的名字，默认: btm2.tlog  
+spring.jta.max-log-size-in-mb | 指定journal fragments大小的最大值. 默认: 2M  
+spring.jta.resource-configuration-filename | 指定Bitronix Transaction Manager配置文件名  
+spring.jta.server-id | 指定Bitronix Transaction Manager实例的id  
+spring.jta.skip-corrupted-logs | 是否忽略corrupted log files文件，默认为false  
+spring.jta.transaction-manager-id | 指定Transaction manager的唯一标识  
+spring.jta.warn-about-zero-resource-transaction | 当使用Bitronix Transaction Manager时，是否对没有使用指定资源的事务进行警告，默认为: true  
+  
