@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Spring-Boot DataSource配置</title>
+<style type="text/css">
+table {
+	border: 1px solid #cdcdcd;
+	width: 100%;
+	margin: 10px auto;
+	border-bottom: none;
+	border-collapse: collapse;
+}
+
+table tr {
+	border-right: 1px solid #cdcdcd;
+}
+
+table tr td:nth-child(1) {
+	width: 35%;
+}
+
+table tr td {
+	border-bottom: 1px solid #cdcdcd;
+}
+</style>
+</head>
+<body>
+	<article>
+		<h2>DataSource 配置说明</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>属性</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>spring.dao.exceptiontranslation.enabled</td>
+					<td>是否开启PersistenceExceptionTranslationPostProcessor，默认为true</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.abandon-when-percentage-full</td>
+					<td>设定超时被废弃的连接占到多少比例时要被关闭或上报</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.allow-pool-suspension</td>
+					<td>使用Hikari pool时，是否允许连接池暂停，默认为: false</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.alternate-username-allowed</td>
+					<td>是否允许替代的用户名</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.auto-commit</td>
+					<td>指定updates是否自动提交</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.catalog</td>
+					<td>指定默认的catalog</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.commit-on-return</td>
+					<td>设置当连接被归还时，是否要提交所有还未完成的事务</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.connection-init-sql</td>
+					<td>指定连接被创建，再被添加到连接池之前执行的sql</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.connection-init-sqls</td>
+					<td>使用DBCP connection pool时，指定初始化时要执行的sql</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.connection-properties.[key]</td>
+					<td>在使用DBCP connection pool时指定要配置的属性</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.connection-test-query指</td>
+					<td>定校验连接合法性执行的sql语句</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.connection-timeout</td>
+					<td>指定连接的超时时间，毫秒单位</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.continue-on-error</td>
+					<td>在初始化数据库时，遇到错误是否继续，默认false</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.data</td>
+					<td>指定Data (DML)脚本</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.data-source-class-name</td>
+					<td>指定数据源的全限定名</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.data-source-jndi</td>
+					<td>指定jndi的地址</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.data-source-properties.[key]</td>
+					<td>使用Hikari connection pool时，指定要设置的属性</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.db-properties</td>
+					<td>使用Tomcat connection pool，指定要设置的属性</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.default-auto-commit</td>
+					<td>是否自动提交</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.default-catalog</td>
+					<td>指定连接默认的catalog</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.default-read-only</td>
+					<td>是否设置默认连接只读</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.default-transaction-isolation</td>
+					<td>指定连接的事务的默认隔离级别</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.driver-class-name</td>
+					<td>指定driver的类名，默认从jdbc url中自动探测</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.fair-queue</td>
+					<td>是否采用FIFO返回连接</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.health-check-properties.[key]</td>
+					<td>使用Hikari connection pool时，在心跳检查时传递的属性</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.idle-timeout</td>
+					<td>指定连接多久没被使用时，被设置为空闲，默认为10ms</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.ignore-exception-on-pre-load</td>
+					<td>当初始化连接池时，是否忽略异常</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.init-sql</td>
+					<td>当连接创建时，执行的sql</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.initial-size</td>
+					<td>指定启动连接池时，初始建立的连接数量</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.initialization-fail-fast</td>
+					<td>当创建连接池时，没法创建指定最小连接数量是否抛异常</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.initialize</td>
+					<td>指定初始化数据源，是否用data.sql来初始化，默认: true</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.isolate-internal-queries</td>
+					<td>指定内部查询是否要被隔离，默认为false</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.jdbc-interceptors</td>
+					<td>使用Tomcat connection pool时，指定jdbc拦截器，分号分隔</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.jdbc-url</td>
+					<td>指定JDBC URL</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.jmx-enabled</td>
+					<td>是否开启JMX，默认为: false</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.jndi-name</td>
+					<td>指定jndi的名称</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.leak-detection-threshold</td>
+					<td>使用Hikari connection pool时，多少毫秒检测一次连接泄露</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.log-abandoned</td>
+					<td>使用DBCP connection pool，是否追踪废弃statement或连接，默认为: false</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.log-validation-errors</td>
+					<td>当使用Tomcat connection pool是否打印校验错误</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.login-timeout</td>
+					<td>指定连接数据库的超时时间</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.max-active</td>
+					<td>指定连接池中最大的活跃连接数</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.max-age</td>
+					<td>指定连接池中连接的最大年龄</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.max-idle</td>
+					<td>指定连接池最大的空闲连接数量</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.max-lifetime</td>
+					<td>指定连接池中连接的最大生存时间，毫秒单位</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.max-open-prepared-statements</td>
+					<td>指定最大的打开的prepared statements数量</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.max-wait</td>
+					<td>指定连接池等待连接返回的最大等待时间，毫秒单位</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.maximum-pool-size</td>
+					<td>指定连接池最大的连接数，包括使用中的和空闲的连接</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.min-evictable-idle-time-millis</td>
+					<td>指定一个空闲连接最少空闲多久后可被清除</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.min-idle</td>
+					<td>指定必须保持连接的最小值(For DBCP and Tomcat connection pools)</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.minimum-idle</td>
+					<td>指定连接维护的最小空闲连接数，当使用HikariCP时指定</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.name</td>
+					<td>指定数据源名</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.num-tests-per-eviction-run</td>
+					<td>指定运行每个idle object evictor线程时的对象数量</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.password</td>
+					<td>指定数据库密码</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.platform</td>
+					<td>指定schema要使用的Platform(schema-${platform}.sql)，默认为: all</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.pool-name</td>
+					<td>指定连接池名字</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.pool-prepared-statements</td>
+					<td>指定是否池化statements</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.propagate-interrupt-state</td>
+					<td>在等待连接时，如果线程被中断，是否传播中断状态</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.read-only</td>
+					<td>当使用Hikari connection pool时，是否标记数据源只读</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.register-mbeans</td>
+					<td>指定Hikari connection pool是否注册JMX MBeans</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.remove-abandoned</td>
+					<td>指定当连接超过废弃超时时间时，是否立刻删除该连接</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.remove-abandoned-timeout</td>
+					<td>指定连接应该被废弃的时间</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.rollback-on-return</td>
+					<td>在归还连接时，是否回滚等待中的事务</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.schema</td>
+					<td>指定Schema (DDL)脚本</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.separator</td>
+					<td>指定初始化脚本的语句分隔符，默认: ;</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.sql-script-encoding</td>
+					<td>指定SQL scripts编码</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.suspect-timeout</td>
+					<td>指定打印废弃连接前的超时时间</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.test-on-borrow</td>
+					<td>当从连接池借用连接时，是否测试该连接</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.test-on-connect</td>
+					<td>创建时，是否测试连接</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.test-on-return</td>
+					<td>在连接归还到连接池时是否测试该连接</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.test-while-idle</td>
+					<td>当连接空闲时，是否执行连接测试</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.time-between-eviction-runs-millis</td>
+					<td>指定空闲连接检查、废弃连接清理、空闲连接池大小调整之间的操作时间间隔</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.transaction-isolation</td>
+					<td>指定事务隔离级别，使用Hikari connection pool时指定</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.url</td>
+					<td>指定JDBC URL</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.use-disposable-connection-facade</td>
+					<td>是否对连接进行包装，防止连接关闭之后被使用</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.use-equals</td>
+					<td>比较方法名时是否使用String.equals()替换==</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.use-lock</td>
+					<td>是否对连接操作加锁</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.username</td>
+					<td>指定数据库名</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.validation-interval</td>
+					<td>指定多少ms执行一次连接校验</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.validation-query</td>
+					<td>指定获取连接时连接校验的sql查询语句</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.validation-query-timeout</td>
+					<td>指定连接校验查询的超时时间</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.validation-timeout</td>
+					<td>设定连接校验的超时时间，当使用Hikari connection pool时指定</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.validator-class-name</td>
+					<td>用来测试查询的validator全限定名</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.xa.data-source-class-name</td>
+					<td>指定数据源的全限定名</td>
+				</tr>
+				<tr>
+					<td>spring.datasource.xa.properties</td>
+					<td>指定传递给XA data source的属性</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>JPA配置</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>属性</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>spring.jpa.database</td>
+					<td>指定目标数据库</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.database-platform</td>
+					<td>指定目标数据库的类型</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.generate-ddl</td>
+					<td>是否在启动时初始化schema，默认为false</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.hibernate.ddl-auto</td>
+					<td>指定DDL mode (none, validate, update, create, create-drop). 当使用内嵌数据库时，默认是create-drop，否则为none</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.hibernate.naming-strategy</td>
+					<td>指定命名策略</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.open-in-view</td>
+					<td>是否注册OpenEntityManagerInViewInterceptor，绑定JPA EntityManager到请求线程中，默认为: true</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.properties</td>
+					<td>添加额外的属性到JPA provider</td>
+				</tr>
+				<tr>
+					<td>spring.jpa.show-sql</td>
+					<td>是否开启sql的log，默认为: false</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>Jooq 配置</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>属性</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>spring.jooq.sql-dialect</td>
+					<td>指定JOOQ使用的SQLDialect，比如POSTGRES</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>h2 配置</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>属性</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>spring.h2.console.enabled</td>
+					<td>是否开启控制台，默认为false</td>
+				</tr>
+				<tr>
+					<td>spring.h2.console.path</td>
+					<td>指定控制台路径，默认为: /h2-console</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3>jta-配置</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>属性</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>spring.jta.default-transaction-timeout</td>
+					<td>设定默认的事务超时时间，默认为60</td>
+				</tr>
+				<tr>
+					<td>spring.jta.disable-jmx</td>
+					<td>是否禁用jmx，默认为false</td>
+				</tr>
+				<tr>
+					<td>spring.jta.enabled</td>
+					<td>是否开启JTA support，默认为: true</td>
+				</tr>
+				<tr>
+					<td>spring.jta.exception-analyzer</td>
+					<td>设置指定的异常分析类</td>
+				</tr>
+				<tr>
+					<td>spring.jta.filter-log-status</td>
+					<td>使用Bitronix Transaction Manager时，是否写mandatory logs，开启的话，可以节省磁盘空间，但是调试会复杂写，默认为false</td>
+				</tr>
+				<tr>
+					<td>spring.jta.force-batching-enabled</td>
+					<td>使用Bitronix Transaction Manager时，是否批量写磁盘，默认为true</td>
+				</tr>
+				<tr>
+					<td>spring.jta.forced-write-enabled</td>
+					<td>使用Bitronix Transaction Manager时，是否强制写日志到磁盘，默认为true</td>
+				</tr>
+				<tr>
+					<td>spring.jta.graceful-shutdown-interval</td>
+					<td>当使用Bitronix Transaction Manager，指定shutdown时等待事务结束的时间，超过则中断，默认为60</td>
+				</tr>
+				<tr>
+					<td>spring.jta.jndi-transaction-synchronization-registry-name</td>
+					<td>当使用Bitronix Transaction Manager时，在JNDI下得事务同步registry，默认为: java:comp/TransactionSynchronizationRegistry</td>
+				</tr>
+				<tr>
+					<td>spring.jta.jndi-user-transaction-name</td>
+					<td>指定在JNDI使用Bitronix Transaction Manager的名称，默认:java:comp/UserTransaction</td>
+				</tr>
+				<tr>
+					<td>spring.jta.journal</td>
+					<td>当使用Bitronix Transaction Manager，指定The journal是否disk还是null还是一个类的全限定名，默认disk</td>
+				</tr>
+				<tr>
+					<td>spring.jta.log-dir</td>
+					<td>事物日志目录</td>
+				</tr>
+				<tr>
+					<td>spring.jta.log-part1-filename</td>
+					<td>指定The journal fragment文件1的名字，默认: btm1.tlog</td>
+				</tr>
+				<tr>
+					<td>spring.jta.log-part2-filename</td>
+					<td>指定The journal fragment文件2的名字，默认: btm2.tlog</td>
+				</tr>
+				<tr>
+					<td>spring.jta.max-log-size-in-mb</td>
+					<td>指定journal fragments大小的最大值. 默认: 2M</td>
+				</tr>
+				<tr>
+					<td>spring.jta.resource-configuration-filename</td>
+					<td>指定Bitronix Transaction Manager配置文件名</td>
+				</tr>
+				<tr>
+					<td>spring.jta.server-id</td>
+					<td>指定Bitronix Transaction Manager实例的id</td>
+				</tr>
+				<tr>
+					<td>spring.jta.skip-corrupted-logs</td>
+					<td>是否忽略corrupted log files文件，默认为false</td>
+				</tr>
+				<tr>
+					<td>spring.jta.transaction-manager-id</td>
+					<td>指定Transaction manager的唯一标识</td>
+				</tr>
+				<tr>
+					<td>spring.jta.warn-about-zero-resource-transaction</td>
+					<td>当使用Bitronix Transaction Manager时，是否对没有使用指定资源的事务进行警告，默认为: true</td>
+				</tr>
+			</tbody>
+		</table>
+	</article>
+</body>
+</html>
+<!-- YYL 2017 03 25 -->
