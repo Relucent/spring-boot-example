@@ -44,6 +44,19 @@ spring:
   cache: false
 
 
+# curl -u admin:admin -X POST http://127.0.0.1:8005/shutdown
+endpoints: 
+ shutdown: 
+  enabled: true
+  sensitive: false
+  path: /shutdown
+management: 
+ port: 8005
+ address: 127.0.0.1
+security: 
+ user: 
+  name: admin
+  password: admin
 
 application: 
  name: 'Example'
