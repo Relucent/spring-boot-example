@@ -48,7 +48,6 @@ spring:
 endpoints: 
  shutdown: 
   enabled: true
-  sensitive: false
   path: /shutdown
 management: 
  port: 8005
