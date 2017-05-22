@@ -14,5 +14,9 @@
 	<dd th:text="${#dates.format(model.time, 'yyyy-MM-dd')}">yyyy-MM-dd</dd>
 	
 	<div th:text="message">message</div>
+	
+	<script th:inline="javascript">
+		var ctx = /*[[${#httpServletRequest.getContextPath()}]]*/;
+	</script>
 </body>
 </html>
