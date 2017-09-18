@@ -19,7 +19,8 @@
 	<div th:text="message">message</div>
 
 	<script th:inline="javascript">
-		var ctx = /*[[${#httpServletRequest.getContextPath()}]]*/;
+		var ctx1 = /*[[${#httpServletRequest.getContextPath()}]]*/;
+		var ctx2 = '[[@{/}]]'.replace(/\/$/, '')
 	</script>
 </body>
 </html>
