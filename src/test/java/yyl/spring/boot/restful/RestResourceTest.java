@@ -12,8 +12,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class RestResourceTest {
-	@Test
-	public void testBasicPreemptive() {
+
+	public static void main(String[] args) {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target("http://localhost:80/rest/hello");
 
@@ -26,5 +26,10 @@ public class RestResourceTest {
 		Map<String, Object> map = response.readEntity(new GenericType<Map<String, Object>>() {
 		});
 		System.out.println(map);
+
+	}
+
+	@Test
+	public void testBasicPreemptive() {
 	}
 }

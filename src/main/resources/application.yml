@@ -21,7 +21,7 @@
 #################################################################################
 
 server: 
- port: ${port:80}
+ port: ${port:8080}
  session-timeout: 30
  context-path: /
  servlet-path: /
@@ -63,6 +63,9 @@ management:
 # user: 
 #  name: admin
 #  password: admin
+ info:
+  git:
+   mode:full
 
 application: 
  name: 'Example'
