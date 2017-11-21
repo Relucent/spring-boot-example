@@ -80,6 +80,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- [ <configuration>] -->
+				<!-- [ <layout>ZIP</layout>] -->
+				<!-- [ <excludeGroupIds>] -->
+				<!-- [ org.springframework.boot,] -->
+				<!-- [ org.springframework,] -->
+				<!-- [ org.springframework.data,] -->
+				<!-- [ org.apache.tomcat.embed] -->
+				<!-- [ </excludeGroupIds>] -->
+				<!-- [ </configuration>] -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
