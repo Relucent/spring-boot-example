@@ -22,7 +22,8 @@
 
 server: 
  port: ${port:8080}
- session-timeout: 30
+ session:
+    timeout: 30
  context-path: /
  servlet-path: /
  tomcat: 
