@@ -4,7 +4,7 @@
 # server.port | 服务端口，默认为8080
 # server.port | 最大超时时间(分钟)，默认为30
 # server.address | 该服务绑定IP地址，启动服务器时如本机不是该IP地址则抛出异常启动失败，只有特殊需求的情况下才配置
-#
+# server.port.session.timeout | SESSION 超时时间 (单位秒)
 # server.tomcat.max-threads | tomcat最大线程数，默认为200
 # server.tomcat.uri-encoding | tomcat编码，默认为UTF-8
 # server.tomcat.basedir | 存放Tomcat的日志、Dump等文件的临时文件夹，默认为系统的tmp文件夹(如：C:\Users\Admin\AppData\Local\Temp)
@@ -23,7 +23,7 @@
 server: 
  port: ${port:8080}
  session:
-    timeout: 30
+    timeout: 1800
  context-path: /
  servlet-path: /
  tomcat: 
