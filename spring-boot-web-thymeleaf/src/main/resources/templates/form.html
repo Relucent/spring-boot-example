@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_base/_fragments :: head(title=~{::title/text()})">
+<title>From</title>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="_base/_fragments :: navbar"></div>
+		<div class="float-right mt-2">
+			<a class="btn btn-primary btn-sm" th:href="@{/}" href="messages.html"> Messages </a>
+		</div>
+		<h4 class="float-left mt-2">Create</h4>
+		<div class="clearfix"></div>
+		<form th:action="@{/(form)}" th:object="${message}" action="#" method="post">
+			<!-- * 选择表达式 th:object后，直接取object中的属性  *{id} 等同于  message.id-->
+			<input type="hidden" th:field="*{id}" th:class="${'form-control' + (#fields.hasErrors('id') ? ' is-invalid' : '')}" />
+			<div th:if="${#fields.hasErrors('*')}" class="alert alert-danger" role="alert">
+				<p th:each="error : ${#fields.errors('*')}" class="m-0" th:text="${error}">Validation error</p>
+			</div>
+			<div class="form-group">
+				<label for="title">Title</label> <input type="text" th:field="*{title}" th:class="${'form-control' + (#fields.hasErrors('title') ? ' is-invalid' : '')}">
+			</div>
+			<div class="form-group">
+				<label for="text">Content</label>
+				<textarea th:field="*{content}" th:class="${'form-control' + (#fields.hasErrors('content') ? ' is-invalid' : '')}"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</body>
+</html>
