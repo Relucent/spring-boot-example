@@ -1,7 +1,5 @@
 /target/
-/*/target/
 !.mvn/wrapper/maven-wrapper.jar
-
 
 ### STS ###
 .apt_generated
@@ -12,7 +10,16 @@
 .springBeans
 .sts4-cache
 
-    © 2018 GitHub, Inc.
-    Terms
-    Privacy
-    Security
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
