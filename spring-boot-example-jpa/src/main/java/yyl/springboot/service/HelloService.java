@@ -40,8 +40,8 @@ public class HelloService {
 
 	@PostConstruct
 	void initialize() {
-		for (long i = 0; i < 32; i++) {
-			helloRepository.save(new Hello(i, String.valueOf('A' + i)));
+		for (long i = 0; i <= 26; i++) {
+			helloRepository.save(new Hello(i + 1, String.valueOf((char) ('A' + i))));
 		}
 	}
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+<script src="s/axios.min.js"></script>
+<script src="s/vue.min.js"></script>
+<style type="text/css">
+.y-table {
+	width: 100%;
+	background-color: #fff;
+	font-size: 14px;
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+.y-table th, .y-table thead tr {
+	text-align: left;
+	background-color: #f2f2f8;
+}
+
+.y-table tr {
+	transition: all .3s;
+	-webkit-transition: all .3s
+}
+
+.y-table td, .y-table th {
+	padding: 9px 15px;
+	min-height: 20px;
+	line-height: 20px;
+	border: 1px solid #e2e2f2;
+}
+</style>
+</head>
+<body>
+	<div id="vue">
+		<table class="y-table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NAME</th>
+					<th>-</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="record in records">
+					<td v-text="record.id"></td>
+					<td v-text="record.name"></td>
+					<td><a href="##" @click="remove(record.id)">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<script>
+		var vm = new Vue({
+			el : '#vue',
+			data : {
+				records : []
+			},
+			methods : {
+				list : function() {
+					axios.get('/hello/').then(function(response) {
+						console.log(response);
+						vm.records = response.data;
+					});
+				},
+				remove : function(id) {
+					axios.delete('/hello/' + id).then(function(response) {
+						console.log(response);
+						vm.list();
+					});
+				}
+			}
+		});
+		vm.list();
+	</script>
+</body>
+</html>
