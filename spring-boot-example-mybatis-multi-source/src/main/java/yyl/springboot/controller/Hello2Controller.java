@@ -10,52 +10,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import yyl.springboot.entity.Hello;
-import yyl.springboot.mapper.HelloMapper;
+import yyl.springboot.entity.db2.Hello2;
+import yyl.springboot.mapper.db2.Hello2Mapper;
 
 @RestController
-@RequestMapping("/hello")
-public class HelloController {
+@RequestMapping("/hello2")
+public class Hello2Controller {
 
 	@Autowired
-	private HelloMapper helloMapper;
+	private Hello2Mapper hello2Mapper;
 
-	// | /hello/
+	// | /hello2/
 	@GetMapping("/")
 	public Object findAll() {
-		return helloMapper.findAll();
+		return hello2Mapper.findAll();
 	}
 
-	// | /hello/{id}
+	// | /hello2/{id}
 	@GetMapping("/{id}")
 	public Object getById(@PathVariable Long id) {
-		return helloMapper.getById(id);
+		return hello2Mapper.getById(id);
 	}
 
-	// | /hello/
+	// | /hello2/{id}
 	@PostMapping("/")
-	public Object save(@RequestBody Hello model) {
+	public Object save(@RequestBody Hello2 model) {
 		Long id = model.getId();
 		if (id == null) {
-			helloMapper.insert(model);
+			hello2Mapper.insert(model);
 		} else {
-			helloMapper.update(model);
+			hello2Mapper.update(model);
 		}
 		return Boolean.TRUE;
 	}
 
 	// | /hello/{id}
 	@PutMapping(value = "/{id}")
-	public Object update(@PathVariable Long id, @RequestBody Hello model) {
+	public Object update(@PathVariable Long id, @RequestBody Hello2 model) {
 		model.setId(id);
-		helloMapper.update(model);
+		hello2Mapper.update(model);
 		return Boolean.TRUE;
 	}
 
 	// | /hello/{id}
 	@DeleteMapping(value = "/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		helloMapper.deleteById(id);
+		hello2Mapper.deleteById(id);
 	}
 
 }
