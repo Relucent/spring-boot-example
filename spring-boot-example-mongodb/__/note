@@ -1,0 +1,3 @@
+#MONGOD启动命令
+
+mongod --dbpath "C:\mongodb\data\db"  --logpath "C:\mongodb\logs\log.txt" --port 27017 --install -serviceName "MongoDB"  
