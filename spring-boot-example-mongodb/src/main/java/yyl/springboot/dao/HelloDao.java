@@ -3,6 +3,9 @@ package yyl.springboot.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -39,13 +42,25 @@ public class HelloDao {
 		return result.getModifiedCount();
 	}
 
-	public Hello getByName(String name) {
+	public Hello getById(Long id) {
+		Query query = new Query(Criteria.where("id").is(id));
+		return  mongoTemplate.findOne(query, Hello.class);
+	}
+	
+	public List<Hello> findByName(String name) {
 		Query query = new Query(Criteria.where("name").is(name));
-		Hello entity = mongoTemplate.findOne(query, Hello.class);
-		return entity;
+		return mongoTemplate.find(query, Hello.class);
 	}
 
 	public List<Hello> findAll() {
 		return mongoTemplate.findAll(Hello.class);
+	}
+
+	public Page<Hello> findBy(Pageable pageable) {
+		Query query = new Query();
+		long count = mongoTemplate.count(query, Hello.class);
+		query.with(pageable);
+		List<Hello> records = mongoTemplate.find(query, Hello.class);
+		return new PageImpl<>(records, pageable, count);
 	}
 }

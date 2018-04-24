@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import yyl.springboot.entity.HelloJpa;
@@ -17,19 +18,25 @@ public class HelloRepositoryTest {
 
 	@Test
 	public void testSave() throws Exception {
+
+		System.out.println("::save");
 		helloRepository.save(new HelloJpa("java"));
 		helloRepository.save(new HelloJpa("C#"));
 		helloRepository.save(new HelloJpa("php"));
 		helloRepository.save(new HelloJpa("python"));
 		helloRepository.save(new HelloJpa("c++"));
 
-		for (HelloJpa hello : helloRepository.findAll()) {
+		System.out.println("::pageable");
+		for (HelloJpa hello : helloRepository.findBy(PageRequest.of(0, 2))) {
 			System.out.println(hello);
 		}
 
-		HelloJpa hello = helloRepository.getByName("java");
-		System.out.println(hello);
+		System.out.println("::findByName");
+		for (HelloJpa hello : helloRepository.findByName("php")) {
+			System.out.println(hello);
+		}
 
+		System.out.println("::deleteAll");
 		helloRepository.deleteAll();
 	}
 }
