@@ -7,12 +7,7 @@
 .apt_generated
 .classpath
 .factorypath
-.project
+#.project
 .settings
 .springBeans
 .sts4-cache
-
-    © 2018 GitHub, Inc.
-    Terms
-    Privacy
-    Security
