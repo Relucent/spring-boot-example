@@ -9,5 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SchedulerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SchedulerApplication.class, args);
+		System.out.println("startup success");
 	}
 }

@@ -8,5 +8,6 @@ public class CommandApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CommandApplication.class, args);
+		System.out.println("startup success");
 	}
 }

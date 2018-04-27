@@ -9,5 +9,6 @@ import org.springframework.jms.annotation.EnableJms;
 public class ActuatorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ActuatorApplication.class, args);
+		System.out.println("startup success");
 	}
 }
