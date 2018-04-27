@@ -44,6 +44,8 @@ Spring Boot 2.x
 
 - [spring-boot-example-activemq](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-activemq)：集成 Activemq(消息队列)示例       
 
+- [spring-boot-example-session](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-session)：集成SpringSession示例       
+
 
 Spring Boot 1.x
 ---
