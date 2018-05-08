@@ -51,7 +51,7 @@ https://kafka.apache.org/downloads
 	bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test
 
 ## 备注
-发现 kafka 连接是用的主机名，所以修改 hosts  
+修改  hosts  
 C:\Windows\System32\drivers\etc\hosts  
 
 	192.168.1.1 KAFKA_HOST_001
