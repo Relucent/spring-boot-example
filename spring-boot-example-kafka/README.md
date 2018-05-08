@@ -18,15 +18,30 @@ https://kafka.apache.org/downloads
 
 	broker.id=1
 
-4. 启动 ZK
-
-	bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
-
 5. 启动 Kafka
 
 	bin/kafka-server-start.sh  config/server.properties
 
-## 测试
+
+## 启动和停止
+
+1. 启动 Zookeeper server
+
+    bin/zookeeper-server-start.sh config/zookeeper.properties &  
+
+2. 启动Kafka server  
+
+    bin/kafka-server-start.sh config/server.properties &  
+
+3. 停止Kafka server
+
+    bin/kafka-server-stop.sh  
+
+4. 停止Zookeeper server  
+
+    bin/zookeeper-server-stop.sh  
+
+## 单机连通性测试
 
 1. 创建 topic  
 使用 kafka-topics.sh 创建单分区单副本的 topic test：  
