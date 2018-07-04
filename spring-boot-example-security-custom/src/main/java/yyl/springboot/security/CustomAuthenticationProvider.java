@@ -20,15 +20,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication)
             throws AuthenticationException {
 
+        System.out.println("->CustomAuthenticationProvider.vaildateUser");
+
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
         List<GrantedAuthority> grantedAuths = new ArrayList<>();
         if (vaildateUser(username, password, grantedAuths)) {
-            
+
             CustomPrincipal principal = new CustomPrincipal(username);
-            
-            Authentication auth = new CustomAuthenticationSuccessToken(principal, password, grantedAuths);
-            return auth;
+
+            return new CustomAuthenticationSuccessToken(principal, password, grantedAuths);
         } else {
             return null;
         }
@@ -37,6 +38,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private boolean vaildateUser(String username, String password,
             List<GrantedAuthority> grantedAuths) {
+
         System.out.println("username:" + username);
         System.out.println("password:" + password);
 

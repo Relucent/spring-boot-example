@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println("用户的用户名: " + username);
+        System.out.println("username: " + username);
 
         // 根据用户名，查找到对应的密码，与权限
         // TODO 此处只是示例，用户名与密码一致

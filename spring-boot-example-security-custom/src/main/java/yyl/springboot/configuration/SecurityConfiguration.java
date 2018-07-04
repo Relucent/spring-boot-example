@@ -10,11 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import yyl.springboot.security.CustomAuthenticationFailureHandler;
 import yyl.springboot.security.CustomAuthenticationFilter;
 import yyl.springboot.security.CustomAuthenticationProvider;
+import yyl.springboot.security.CustomAuthenticationSuccessHandler;
 
 
-//|如果想支持@PreAuthorize,可以添加  @EnableGlobalMethodSecurity(prePostEnabled = true) 注解
+// |如果想支持@PreAuthorize,可以添加 @EnableGlobalMethodSecurity(prePostEnabled = true) 注解
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -28,7 +30,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
 
         // http.authorizeRequests()方法有多个子节点，每个MACHER按照他们的声明顺序执行
         http.authorizeRequests()
@@ -44,10 +45,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().formLogin()
                 // 设置登录URL为/login
                 .loginPage("/login").permitAll()
-                // 指定登录失败后跳转到/login?error页面
-                .failureUrl("/login?error").permitAll()
-                // 指定登录成功后跳转到/index页面
+
+                // 指定登录失败后跳转到/login?error页面 |
+                .failureUrl("/login?error")
+                // 指定登录成功后跳转到/index页面 | 与successHandler方法冲突 |
                 .defaultSuccessUrl("/index")
+
+                // 备注：
+                // 这两个方法配置的类会注入到UsernamePasswordAuthenticationFilter 而非 customAuthenticationFilter
+                // 所以successHandler和failureHandler此处配置是无效的
+                // 解决方法是直接将 successHandler和failureHandler 添加给customAuthenticationFilter
+
+
+                // 配置登录成功的处理器 和 登录失败的处理器
+                .successHandler(customAuthenticationSuccessHandler())
+                .failureHandler(customAuthenticationFailureHandler())
+
                 // 配置登出
                 .and().logout()
                 // 指定登出的URL (默认logout)
@@ -76,7 +89,25 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public CustomAuthenticationFilter customAuthenticationFilter() throws Exception {
-        return new CustomAuthenticationFilter(super.authenticationManager());
+
+        CustomAuthenticationFilter customFilter =
+                new CustomAuthenticationFilter(authenticationManager());
+
+        // 配置成功和失败的处理器
+        customFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler());
+        customFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler());
+
+        return customFilter;
+    }
+
+    @Bean
+    public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler();
+    }
+
+    @Bean
+    public CustomAuthenticationFailureHandler customAuthenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
     }
 
     @Bean
