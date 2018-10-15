@@ -1,0 +1,883 @@
+要加“m”说明是MB，否则就是KB了.
+-Xms：初始值
+-Xmx：最大值 
+-Xmn：最小值
+java -Xms10m -Xmx80m -jar -Duser.timezone=GMT+08 demo.jar & 
+ 
+＃----------------------------------------  
+＃核心属性  
+＃----------------------------------------  
+  
+＃BANNER  
+banner.charset = UTF -8＃横幅文件编码。  
+banner.location = classpath ：banner.txt＃横幅文件位置。  
+  
+＃LOGGING  
+logging.config =＃日志记录配置文件的位置。例如对于Logback的“classpath：logback.xml”  
+logging.exception-conversion-word =％wEx＃记录异常时使用的转换字。  
+logging.file =＃日志文件名。例如`myapp.log`  
+logging.level。* =＃日志级别严重性映射。例如` logging.level.org.springframework = DEBUG `  
+logging.path =＃日志文件的位置。例如`/ var / log`  
+logging.pattern.console =＃输出到控制台的Appender模式。仅支持默认logback设置。  
+logging.pattern.file =＃输出到文件的Appender模式。仅支持默认logback设置。  
+logging.pattern.level =＃日志级别的Appender模式（默认为％5p）。仅支持默认logback设置。  
+logging.register-shutdown-hook = false  ＃在初始化时为日志系统注册一个关闭挂接。  
+  
+＃AOP  
+spring.aop.auto = true  ＃添加@EnableAspectJAutoProxy。  
+spring.aop.proxy-target-class = false  ＃是否要创建基于子类（CGLIB）的代理（true），而不是基于标准Java接口的代理（false）。  
+  
+＃IDENTITY（ContextIdApplicationContextInitializer）  
+spring.application.index =＃应用程序索引。  
+spring.application.name =＃应用程序名称。  
+  
+＃ADMIN（SpringApplicationAdminJmxAutoConfiguration）  
+spring.application.admin.enabled = false  ＃为应用程序启用管理功能。  
+spring.application.admin.jmx-name = org .springframework.boot：type = Admin ，name = SpringApplication  ＃应用程序管理MBean的JMX名称。  
+  
+＃AUTO-CONFIGURATION  
+spring.autoconfigure.exclude =＃要自动配置要排除的类。  
+  
+＃SPRING CORE  
+spring.beaninfo.ignore = true  ＃跳过搜索BeanInfo类。  
+  
+＃SPRING CACHE（CacheProperties）  
+spring.cache.cache-names =＃如果底层缓存管理器支持，则创建缓冲区名称的逗号分隔列表。  
+spring.cache.ehcache.config =＃用于初始化EhCache的配置文件的位置。  
+spring.cache.guava.spec =＃用于创建缓存的规范。检查CacheBuilderSpec有关规格格式的更多详细信息。  
+spring.cache.hazelcast.config =＃用于初始化Hazelcast的配置文件的位置。  
+spring.cache.infinispan.config =＃用于初始化Infinispan的配置文件的位置。  
+spring.cache.jcache.config =＃用于初始化缓存管理器的配置文件的位置。  
+spring.cache.jcache.provider =＃用于检索符合JSR-107规范的缓存管理器的CachingProvider实现的完全限定名。只有在类路径上有多个JSR-107实现可用时才需要。  
+spring.cache.type =＃缓存类型，默认情况下根据环境自动检测。  
+  
+＃SPRING CONFIG - 仅使用环境属性（ConfigFileApplicationListener）  
+spring.config.location =＃配置文件位置。  
+spring.config.name = application  ＃配置文件名。  
+  
+＃HAZELCAST（HazelcastProperties）  
+spring.hazelcast.config =＃用于初始化Hazelcast的配置文件的位置。  
+  
+＃JMX  
+spring.jmx.default-domain =＃JMX域名。  
+spring.jmx.enabled = true  ＃将管理bean暴露给JMX域。  
+spring.jmx.server = mbeanServer  ＃MBeanServer bean名称。  
+  
+＃Email（MailProperties）  
+spring.mail.default-encoding = UTF -8＃默认MimeMessage编码。  
+spring.mail.host =＃SMTP服务器主机。例如`smtp.example.com`  
+spring.mail.jndi-name =＃Session JNDI名称。设置时，优先于其他邮件设置。  
+spring.mail.password =＃SMTP服务器的登录密码。  
+spring.mail.port =＃SMTP服务器端口。  
+spring.mail.properties。* =＃其他JavaMail会话属性。  
+spring.mail.protocol = smtp  ＃SMTP服务器使用的协议。  
+spring.mail.test-connection = false  ＃测试邮件服务器在启动时是否可用。  
+spring.mail.username =＃SMTP服务器的登录用户。  
+  
+＃APPLICATION SETTINGS（SpringApplication）  
+spring.main.banner-mode = console  ＃用于在应用程序运行时显示横幅的模式。  
+spring.main.sources =＃要包括在ApplicationContext中的Sources（类名，包名或XML资源位置）。  
+spring.main.web-environment =＃在Web环境中运行应用程序（默认情况下自动检测）。  
+  
+＃FILE ENCODING（FileEncodingApplicationListener）  
+spring.mandatory-file-encoding =＃应用程序必须使用的预期字符编码。  
+  
+＃INTERNATIONALIZATION（MessageSourceAutoConfiguration）  
+spring.messages.basename = messages  ＃以逗号分隔的基本名称列表，每个名称遵循ResourceBundle约定。  
+spring.messages.cache-seconds = -1＃加载的资源束文件缓存到期时间（以秒为单位）。设置为-1时，捆绑包将被永久缓存。  
+spring.messages.encoding = UTF -8＃消息包编码。  
+spring.messages.fallback-to-system-locale = true  ＃设置是否找不到特定区域设置的文件，返回到系统区域设置。  
+  
+＃OUTPUT  
+spring.output.ansi.enabled = detect  ＃配置ANSI输出（可以是“detect”，“always”，“never”）。  
+  
+＃PID FILE（ApplicationPidFileWriter）  
+spring.pid.fail-on-write-error =＃如果使用ApplicationPidFileWriter但不能写入PID文件，则失败。  
+spring.pid.file =＃要写入的PID文件的位置（如果使用ApplicationPidFileWriter）。  
+  
+＃PROFILES  
+spring.profiles.active =＃活动配置文件的逗号分隔列表。  
+spring.profiles.include =＃无条件地激活指定的逗号分隔的概要文件。  
+  
+＃SENDGRID（SendGridAutoConfiguration）  
+spring.sendgrid.api-key =＃SendGrid api key（用户名/密码的替代）  
+spring.sendgrid.username =＃SendGrid帐户用户名  
+spring.sendgrid.password =＃SendGrid帐户密码  
+spring.sendgrid.proxy.host =＃SendGrid代理主机  
+spring.sendgrid.proxy.port =＃SendGrid代理端口  
+  
+  
+＃----------------------------------------  
+＃WEB PROPERTIES  
+＃----------------------------------------  
+  
+＃MULTIPART（MultipartProperties）  
+multipart.enabled = true  ＃启用对多部分上传的支持。  
+multipart.file-size-threshold = 0  ＃将文件写入磁盘的阈值。值可以使用后缀“MB”或“KB”表示兆字节或千字节大小。  
+multipart.location =＃上传文件的中间位置。  
+multipart.max-file-size = 1Mb  ＃最大文件大小。值可以使用后缀“MB”或“KB”表示兆字节或千字节大小。  
+multipart.max-request-size = 10Mb  ＃最大请求大小。值可以使用后缀“MB”或“KB”表示兆字节或千字节大小。  
+  
+＃EMBEDDED SERVER CONFIGURATION（ServerProperties）  
+server.address =＃服务器应绑定到的网络地址。  
+server.compression.enabled = false  ＃如果启用了响应压缩。  
+server.compression.excluded-user-agents =＃要从压缩中排除的用户代理的列表。  
+server.compression.mime-types =＃应压缩的MIME类型的逗号分隔列表。例如`text / html，text / css，application / json`  
+server.compression.min-response-size =＃要执行压缩所需的最小响应大小。例如2048  
+server.context-parameters。* =＃Servlet上下文初始化参数。例如` server.context-parameters.a = 阿尔法`  
+server.context-path =＃应用程序的上下文路径。  
+server.display-name = application  ＃显示应用程序的名称。  
+server.error.include-stacktrace = never  ＃何时包含“stacktrace”属性。  
+server.error.path = / error＃错误控制器的路径。  
+server.error.whitelabel.enabled = true  ＃在服务器错误的情况下启用浏览器中显示的默认错误页面。  
+server.jsp-servlet.class-name = org .apache.jasper.servlet.JspServlet＃JSP servlet的类名。  
+server.jsp-servlet.init-parameters。* =＃用于配置JSP servlet的初始化参数  
+server.jsp-servlet.registered = true  ＃是否注册了JSP servlet  
+server.port = 8080  ＃服务器HTTP端口。  
+server.server-header =＃在服务器响应头中发送的值（如果为空，则使用servlet容器默认值）  
+server.servlet-path = /＃主调度程序servlet的路径。  
+server.session.cookie.comment =＃对会话cookie进行注释。  
+server.session.cookie.domain =＃会话cookie的域。  
+server.session.cookie.http-only =＃“HttpOnly”标志为会话cookie。  
+server.session.cookie.max-age =＃会话Cookie的最大时间（以秒为单位）。  
+server.session.cookie.name =＃会话cookie名称。  
+server.session.cookie.path =＃会话cookie的路径。  
+server.session.cookie.secure =＃“安全”标志的会话cookie。  
+server.session.persistent = false  ＃在重新启动之间保持会话数据。  
+server.session.store-dir =＃用于存储会话数据的目录。  
+server.session.timeout =＃会话超时（以秒为单位）。  
+server.session.tracking-modes =＃会话跟踪模式（以下一个或多个：“cookie”，“url”，“ssl”）。  
+server.ssl.ciphers =＃支持的SSL密码。  
+server.ssl.client-auth =＃是否需要客户端身份验证（“需要”）或需要（“需要”）。需要信任存储。  
+server.ssl.enabled =＃  
+server.ssl.key-alias =＃  
+server.ssl.key-password =＃  
+server.ssl.key-store =＃  
+server.ssl.key-store-password =＃  
+server.ssl.key-store-provider =＃  
+server.ssl.key-store-type =＃  
+server.ssl.protocol =＃  
+server.ssl.trust-store =＃  
+server.ssl.trust-store-password =＃  
+server.ssl.trust-store-provider =＃  
+server.ssl.trust-store-type =＃  
+server.tomcat.accesslog.directory = logs  ＃创建日志文件的目录。可以相对于tomcat的base dir或绝对。  
+server.tomcat.accesslog.enabled = false  ＃启用访问日志。  
+server.tomcat.accesslog.pattern = common  ＃访问日志的格式模式。  
+server.tomcat.accesslog.prefix = access_log  ＃日志文件名前缀。  
+server.tomcat.accesslog.suffix = .log＃日志文件名后缀。  
+server.tomcat.background-processor-delay = 30  ＃调用backgroundProcess方法之间的延迟（以秒为单位）。  
+server.tomcat.basedir =＃Tomcat基目录。如果未指定，将使用临时目录。  
+server.tomcat.internal-proxies = 10 \\。\\ d {1,3} \\。\\ d {1,3} \\。\\ d {1,3} | \\  
+        192 \\。168 \\。\\ d {1,3} \\。\\ d {1,3} | \\  
+        169 \\。254 \\。\\ d {1,3} \\。\\ d {1,3} | \\  
+        127 \\。\\ d {1,3} \\。\\ d {1,3} \\。\\ d {1,3} | \\  
+        172 \\。1 [6-9] {1} \\。\\ d {1,3} \\。\\ d {1,3} | \\  
+        172 \\。2 [0-9] {1} \\。\\ d {1,3} \\。\\ d {1,3} | \\  
+        172 \\。3 [0-1] {1} \\。\\ d {1,3} \\。\\ d {1,3}＃正则表达式匹配可信IP地址。  
+server.tomcat.max-http-header-size = 0  ＃HTTP消息头的最大大小（以字节为单位）。  
+server.tomcat.max-threads = 0  ＃最大工作线程数。  
+server.tomcat.port-header = X -Forwarded-Port＃用于覆盖原始端口值的HTTP头的名称。  
+server.tomcat.protocol-header =＃保存传入协议的头，通常命名为“X-Forwarded-Proto”。  
+server.tomcat.protocol-header-https-value = https  ＃指示入局请求使用SSL的协议头的值。  
+server.tomcat.remote-ip-header =＃从中提取远程ip的http标头的名称。例如`X-FORWARDED-FOR`  
+server.tomcat.uri-encoding = UTF -8＃用于解码URI的字符编码。  
+server.undertow.accesslog.dir =＃访问日志目录。  
+server.undertow.accesslog.enabled = false  ＃启用访问日志。  
+server.undertow.accesslog.pattern = common  ＃访问日志的格式模式。  
+server.undertow.buffer-size =＃每个缓冲区的大小（以字节为单位）。  
+server.undertow.buffers-per-region =＃每个区域的缓冲区数。  
+server.undertow.direct-buffers =＃在Java堆外分配缓冲区。  
+server.undertow.io-threads =＃为worker创建的I / O线程数。  
+server.undertow.worker-threads =＃工作线程数。  
+server.use-forward-headers =＃如果X-Forwarded- *头应该应用于HttpRequest。  
+  
+＃FREEMARKER（FreeMarkerAutoConfiguration）  
+spring.freemarker.allow-request-override = false  ＃设置是否允许HttpServletRequest属性覆盖（隐藏）控制器生成的同名模型属性。  
+spring.freemarker.allow-session-override = false  ＃设置是否允许HttpSession属性覆盖（隐藏）控制器生成的同名模型属性。  
+spring.freemarker.cache = false  ＃启用模板缓存。  
+spring.freemarker.charset = UTF -8＃模板编码。  
+spring.freemarker.check-template-location = true  ＃检查模板位置是否存在。  
+spring.freemarker.content-type = text / html＃Content-Type值。  
+spring.freemarker.enabled = true  ＃为此技术启用MVC视图分辨率。  
+spring.freemarker.expose-request-attributes = false  ＃设置是否应在与模板合并之前将所有请求属性添加到模型。  
+spring.freemarker.expose-session-attributes = false  ＃设置在与模板合并之前是否应将所有HttpSession属性添加到模型。  
+spring.freemarker.expose-spring-macro-helpers = true  ＃设置是否公开一个RequestContext供Spring的宏库使用，名称为“springMacroRequestContext”。  
+spring.freemarker.prefer-file-system-access = true  ＃首选模板加载的文件系统访问。文件系统访问启用对模板更改的热检测。  
+spring.freemarker.prefix =＃在构建URL时，预先查看名称的前缀。  
+spring.freemarker.request-context-attribute =＃所有视图的RequestContext属性的名称。  
+spring.freemarker.settings。* =＃众所周知的FreeMarker键，它将被传递给FreeMarker的配置。  
+spring.freemarker.suffix =＃构建URL时附加到视图名称的后缀。  
+spring.freemarker.template-loader-path = classpath ：/ templates /＃模板路径的逗号分隔列表。  
+spring.freemarker.view-names =＃可以解析的视图名称的白名单。  
+  
+＃GROOVY TEMPLATES（GroovyTemplateAutoConfiguration）  
+spring.groovy.template.allow-request-override = false  ＃设置是否允许HttpServletRequest属性覆盖（隐藏）控制器生成的同名模型属性。  
+spring.groovy.template.allow-session-override = false  ＃设置是否允许HttpSession属性覆盖（隐藏）控制器生成的同名的模型属性。  
+spring.groovy.template.cache =＃启用模板缓存。  
+spring.groovy.template.charset = UTF -8＃模板编码。  
+spring.groovy.template.check-template-location = true  ＃检查模板位置是否存在。  
+spring.groovy.template.configuration。* =＃参见GroovyMarkupConfigurer  
+spring.groovy.template.content-type = test / html＃Content-Type值。  
+spring.groovy.template.enabled = true  ＃为此技术启用MVC视图分辨率。  
+spring.groovy.template.expose-request-attributes = false  ＃设置是否应在合并模板之前将所有请求属性添加到模型。  
+spring.groovy.template.expose-session-attributes = false  ＃设置在与模板合并之前是否应该将所有HttpSession属性添加到模型。  
+spring.groovy.template.expose-spring-macro-helpers = true  ＃设置是否公开一个RequestContext供Spring的宏库使用，名称为“springMacroRequestContext”。  
+spring.groovy.template.prefix =＃构建URL时，在前面添加用于查看名称的前缀。  
+spring.groovy.template.request-context-attribute =＃所有视图的RequestContext属性的名称。  
+spring.groovy.template.resource-loader-path = classpath ：/ templates /＃模板路径。  
+spring.groovy.template.suffix = .tpl＃构建URL时附加到视图名称的后缀。  
+spring.groovy.template.view-names =＃可以解析的视图名称的白名单。  
+  
+＃SPRING HATEOAS（HateoasProperties）  
+spring.hateoas.use-hal-as-default-json-media-type = true  ＃指定是否应该将application / hal + json响应发送到接受application / json的请求。  
+  
+＃HTTP消息转换  
+spring.http.converters.preferred-json-mapper = jackson  ＃首选用于HTTP消息转换的JSON映射程序。设置为“gson”以强制使用Gson，当它和Jackson都在类路径上时。  
+  
+＃HTTP encoding（HttpEncodingProperties）  
+spring.http.encoding.charset = UTF -8＃HTTP请求和响应的字符集。如果未明确设置，则添加到“Content-Type”标题。  
+spring.http.encoding.enabled = true  ＃启用http编码支持。  
+spring.http.encoding.force = true  ＃强制编码到配置的字符集上HTTP请求和响应。  
+  
+＃JACKSON（JacksonProperties）  
+spring.jackson.date-format =＃日期格式字符串或完全限定的日期格式类名称。例如`yyyy-MM-dd HH：mm：ss`。  
+spring.jackson.deserialization。* =＃Jackson on / off功能影响Java对象的反序列化方式。  
+spring.jackson.generator。* =＃Jackson的on / off功能用于生成器。  
+spring.jackson.joda-date-time-format =＃Joda日期时间格式字符串。如果未配置，如果使用格式字符串配置，“date-format”将用作后备。  
+spring.jackson.locale =＃用于格式化的区域设置。  
+spring.jackson.mapper。* =＃Jackson通用开/关功能。  
+spring.jackson.parser。* =＃Jackson解析器的on / off功能。  
+spring.jackson.property-naming-strategy =＃Jackson的PropertyNamingStrategy上的一个常量。也可以是PropertyNamingStrategy子类的完全限定类名。  
+spring.jackson.serialization。* =＃Jackson on / off功能影响Java对象的序列化方式。  
+spring.jackson.serialization-inclusion =＃控制序列化期间属性的包含。使用Jackson的JsonInclude.Include枚举中的值之一进行配置。  
+spring.jackson.time-zone =＃格式化日期时使用的时区。例如`America / Los_Angeles`  
+  
+＃JERSEY（JerseyProperties）  
+spring.jersey.application-path =＃作为应用程序的基本URI的路径。如果指定，则覆盖“@ApplicationPath”的值。  
+spring.jersey.filter.order = 0  ＃Jersey过滤器链的顺序。  
+spring.jersey.init。* =＃通过servlet或过滤器传递给Jersey的初始参数。  
+spring.jersey.type = servlet  ＃Jersey集成类型。可以是“servlet”或“filter”。  
+  
+＃SPRING MOBILE DEVICE VIEWS（DeviceDelegatingViewResolverAutoConfiguration）  
+spring.mobile.devicedelegatingviewresolver.enable-fallback = false  ＃启用支持回退解析。  
+spring.mobile.devicedelegatingviewresolver.enabled = false  ＃启用设备视图解析器。  
+spring.mobile.devicedelegatingviewresolver.mobile-prefix = mobile /＃预先在移动设备上查看名称的前缀。  
+spring.mobile.devicedelegatingviewresolver.mobile-suffix =＃附加到移动设备的视图名称的后缀。  
+spring.mobile.devicedelegatingviewresolver.normal-prefix =＃前缀，用于查看常规设备的名称。  
+spring.mobile.devicedelegatingviewresolver.normal-suffix =＃附加到普通设备的视图名称的后缀。  
+spring.mobile.devicedelegatingviewresolver.tablet-prefix = tablet /＃预先查看平板电脑设备名称的前缀。  
+spring.mobile.devicedelegatingviewresolver.tablet-suffix =＃附加到平板电脑设备的视图名称的后缀。  
+  
+＃SPRING MOBILE SITE PREFERENCE（SitePreferenceAutoConfiguration）  
+spring.mobile.sitepreference.enabled = true  ＃启用SitePreferenceHandler。  
+  
+＃MUSTACHE TEMPLATES（MustacheAutoConfiguration）  
+spring.mustache.cache = false  ＃启用模板缓存。  
+spring.mustache.charset = UTF -8＃模板编码。  
+spring.mustache.check-template-location = true  ＃检查模板位置是否存在。  
+spring.mustache.content-type = text / html＃Content-Type值。  
+spring.mustache.enabled = true  ＃为此技术启用MVC视图分辨率。  
+spring.mustache.prefix = classpath ：/ templates /＃要应用于模板名称的前缀。  
+spring.mustache.suffix = .html＃应用于模板名称的后缀。  
+spring.mustache.view-names =＃可以解析的视图名称的白名单。  
+  
+＃SPRING MVC（WebMvcProperties）  
+spring.mvc.async.request-timeout =＃异步请求处理超时之前的时间（以毫秒为单位）。  
+spring.mvc.date-format =＃要使用的日期格式。例如`dd / MM / yyyy`。  
+spring.mvc.dispatch-trace-request = false  ＃将TRACE请求分发到FrameworkServlet doService方法。  
+spring.mvc.dispatch-options-request = false  ＃向FrameworkServlet doService方法分发OPTIONS请求。  
+spring.mvc.favicon.enabled = true  ＃启用favicon.ico的解析。  
+spring.mvc.ignore-default-model-on-redirect = true  ＃如果在重定向场景中应该忽略“默认”模型的内容。  
+spring.mvc.locale =＃要使用的区域设置。  
+spring.mvc.media-types。* =＃将文件扩展名映射到用于内容协商的媒体类型。  
+spring.mvc.message-codes-resolver-format =＃消息代码的格式化策略。例如`PREFIX_ERROR_CODE`。  
+spring.mvc.static-path-pattern = / **＃用于静态资源的路径模式。  
+spring.mvc.throw-exception-if-no-handler-found = false  ＃如果没有找到处理请求的处理程序，应抛出“NoHandlerFoundException”。  
+spring.mvc.view.prefix =＃Spring MVC视图前缀。  
+spring.mvc.view.suffix =＃Spring MVC视图后缀。  
+  
+＃SPRING RESOURCES HANDLING（ResourceProperties）  
+spring.resources.add-mappings = true  ＃启用默认资源处理。  
+spring.resources.cache-period =＃资源处理程序服务的资源的高速缓存时间段（以秒为单位）。  
+spring.resources.chain.cache = true  ＃在资源链中启用缓存。  
+spring.resources.chain.enabled =＃启用Spring资源处理链。默认情况下禁用，除非已启用至少一个策略。  
+spring.resources.chain.html-application-cache = false  ＃启用HTML5应用程序缓存清单重写。  
+spring.resources.chain.strategy.content.enabled = false  ＃启用内容版本策略。  
+spring.resources.chain.strategy.content.paths = / **＃要应用于版本策略的模式的逗号分隔列表。  
+spring.resources.chain.strategy.fixed.enabled = false  ＃启用固定版本策略。  
+spring.resources.chain.strategy.fixed.paths =＃要应用于版本策略的模式的逗号分隔列表。  
+spring.resources.chain.strategy.fixed.version =＃用于版本策略的版本字符串。  
+spring.resources.static-locations = classpath ：/ META-INF / resources /，classpath：/ resources /，classpath：/ static /，classpath：/ public /＃静态资源的位置。  
+  
+＃SPRING SOCIAL（SocialWebAutoConfiguration）  
+spring.social.auto-connection-views = false  ＃启用支持的提供程序的连接状态视图。  
+  
+＃SPRING SOCIAL FACEBOOK（FacebookAutoConfiguration）  
+spring.social.facebook.app-id =＃你的应用程序的Facebook应用程序ID  
+spring.social.facebook.app-secret =＃你的应用程序的Facebook应用程序秘密  
+  
+＃SPRING SOCIAL LINKEDIN（LinkedInAutoConfiguration）  
+spring.social.linkedin.app-id =＃您的应用程序的LinkedIn应用程序ID  
+spring.social.linkedin.app-secret =＃你的应用程序的LinkedIn应用程序秘密  
+  
+＃SPRING SOCIAL TWITTER（TwitterAutoConfiguration）  
+spring.social.twitter.app-id =＃您应用程序的Twitter应用程序ID  
+spring.social.twitter.app-secret =＃你的应用程序的Twitter应用程序秘密  
+  
+＃THYMELEAF（ThymeleafAutoConfiguration）  
+spring.thymeleaf.cache = true  ＃启用模板缓存。  
+spring.thymeleaf.check-template-location = true  ＃检查模板位置是否存在。  
+spring.thymeleaf.content-type = text / html＃Content-Type值。  
+spring.thymeleaf.enabled = true  ＃启用MVC Thymeleaf视图分辨率。  
+spring.thymeleaf.encoding = UTF -8＃模板编码。  
+spring.thymeleaf.excluded-view-names =＃应该从解析中排除的以逗号分隔的视图名称列表。  
+spring.thymeleaf.mode = HTML5  ＃要应用于模板的模板模式。另请参见StandardTemplateModeHandlers。  
+spring.thymeleaf.prefix = classpath ：/ templates /＃构建URL时预先查看名称的前缀。  
+spring.thymeleaf.suffix = .html＃构建URL时附加到视图名称的后缀。  
+spring.thymeleaf.template-resolver-order =＃链中模板解析器的顺序。  
+spring.thymeleaf.view-names =＃可以解析的以逗号分隔的视图名称列表。  
+  
+＃VELOCITY TEMPLATES（VelocityAutoConfiguration）  
+spring.velocity.allow-request-override = false  ＃设置是否允许HttpServletRequest属性覆盖（隐藏）控制器生成的同名模型属性。  
+spring.velocity.allow-session-override = false  ＃设置是否允许HttpSession属性覆盖（隐藏）控制器生成的同名模型属性。  
+spring.velocity.cache =＃启用模板缓存。  
+spring.velocity.charset = UTF -8＃模板编码。  
+spring.velocity.check-template-location = true  ＃检查模板位置是否存在。  
+spring.velocity.content-type = text / html＃Content-Type值。  
+spring.velocity.date-tool-attribute =＃要在视图的Velocity上下文中公开的DateTool辅助对象的名称。  
+spring.velocity.enabled = true  ＃为此技术启用MVC视图分辨率。  
+spring.velocity.expose-request-attributes = false  ＃设置是否应在与模板合并之前将所有请求属性添加到模型。  
+spring.velocity.expose-session-attributes = false  ＃设置在与模板合并之前是否应该将所有HttpSession属性添加到模型。  
+spring.velocity.expose-spring-macro-helpers = true  ＃设置是否公开一个RequestContext供Spring的宏库使用，名称为“springMacroRequestContext”。  
+spring.velocity.number-tool-attribute =＃要在视图的Velocity上下文中公开的NumberTool辅助对象的名称。  
+spring.velocity.prefer-file-system-access = true  ＃首选模板加载的文件系统访问。文件系统访问启用对模板更改的热检测。  
+spring.velocity.prefix =＃构建URL时在前面添加用于查看名称的前缀。  
+spring.velocity.properties。* =＃额外的速度属性。  
+spring.velocity.request-context-attribute =＃所有视图的RequestContext属性的名称。  
+spring.velocity.resource-loader-path = classpath ：/ templates /＃模板路径。  
+spring.velocity.suffix = .vm ＃构建URL时附加到视图名称的后缀。  
+spring.velocity.toolbox-config-location =＃Velocity工具箱配置位置。例如`/ WEB-INF / toolbox.xml  
+spring.velocity.view-names =＃可以解析的视图名称的白名单。  
+  
+  
+  
+＃----------------------------------------  
+＃安全性  
+＃----------------------------------------  
+＃SECURITY（SecurityProperties）  
+security.basic.authorize-mode = role  ＃应用安全授权模式。  
+security.basic.enabled = true  ＃启用基本认证。  
+security.basic.path = / **＃以逗号分隔的安全路径列表。  
+security.basic.realm = Spring  ＃HTTP基本领域名称。  
+security.enable-csrf = false  ＃启用跨站点请求伪造支持。  
+security.filter-order = 0  ＃安全过滤器链顺序。  
+security.filter-dispatcher-types = ASYNC ，FORWARD，INCLUDE，REQUEST＃安全过滤器链分派器类型。  
+security.headers.cache = true  ＃启用缓存控制HTTP头。  
+security.headers.content-type = true  ＃启用“X-Content-Type-Options”标头。  
+security.headers.frame = true  ＃启用“X-Frame-Options”标头。  
+security.headers.hsts =＃HTTP严格传输安全（HSTS）模式（无，域，全部）。  
+security.headers.xss = true  ＃启用跨站点脚本（XSS）保护。  
+security.ignored =＃要从默认安全路径中排除的路径的逗号分隔列表。  
+security.require-ssl = false  ＃为所有请求启用安全通道。  
+security.sessions = stateless  ＃会话创建策略（始终，从不，if_required，无状态）。  
+security.user.name = user  ＃默认用户名。  
+security.user.password =＃默认用户名的密码。默认情况下，在启动时记录随机密码。  
+security.user.role = USER  ＃为默认用户名授予角色。  
+  
+＃SECURITY OAUTH2 CLIENT（OAuth2ClientProperties  
+security.oauth2.client.client-id =＃OAuth2客户端ID。  
+security.oauth2.client.client-secret =＃OAuth2客户端密钥。默认情况下会生成随机密钥  
+  
+＃SECURITY OAUTH2 RESOURCES（ResourceServerProperties  
+security.oauth2.resource.id =＃资源的标识符。  
+security.oauth2.resource.jwt.key-uri =＃JWT令牌的URI。如果值不可用并且密钥为public，则可以设置。  
+security.oauth2.resource.jwt.key-value =＃JWT令牌的验证密钥。可以是对称秘密或PEM编码的RSA公钥。  
+security.oauth2.resource.prefer-token-info = true  ＃使用令牌info，可以设置为false来使用用户信息。  
+security.oauth2.resource.service-id = resource  ＃  
+security.oauth2.resource.token-info-uri =＃令牌解码端点的URI。  
+security.oauth2.resource.token-type =＃使用userInfoUri时要发送的令牌类型。  
+security.oauth2.resource.user-info-uri =＃用户端点的URI。  
+  
+＃SECURITY OAUTH2 SSO（OAuth2SsoProperties  
+security.oauth2.sso.filter-order =＃如果未提供明确的WebSecurityConfigurerAdapter，则应用过滤顺序  
+security.oauth2.sso.login-path = / login＃登录页面的路径，即触发重定向到OAuth2授权服务器的路径  
+  
+  
+＃----------------------------------------  
+＃数据属性  
+＃----------------------------------------  
+  
+＃FLYWAY（FlywayProperties）  
+flyway.baseline-description =＃  
+flyway.baseline-version = 1  ＃版本开始迁移  
+flyway.baseline-on-migrate =＃  
+flyway.check-location = false  ＃检查迁移脚本位置是否存在。  
+flyway.clean-on-validation-error =＃  
+flyway.enabled = true  ＃启用flyway 。  
+flyway.encoding =＃  
+flyway.ignore-failed-future-migration =＃  
+flyway.init-sqls =＃在获取连接后立即执行初始化连接的SQL语句。  
+flyway.locations = classpath：db / migration＃迁移脚本的位置  
+flyway.out-of-order =＃  
+flyway.password =＃JDBC密码，如果你想让Flyway创建自己的DataSource  
+flyway.placeholder-prefix =＃  
+flyway.placeholder-replacement =＃  
+flyway.placeholder-suffix =＃  
+flyway.placeholders。* =＃  
+flyway.schemas =＃schemas要更新  
+flyway.sql-migration-prefix = V  ＃  
+flyway.sql-migration-separator =＃  
+flyway.sql-migration-suffix = .sql＃  
+flyway.table =＃  
+flyway.url =＃要迁移的数据库的JDBC URL。如果未设置，则使用主配置的数据源。  
+flyway.user =＃要迁移的数据库的登录用户。  
+flyway.validate-on-migrate =＃  
+  
+＃LIQUIBASE（LiquibaseProperties）  
+liquibase.change-log = classpath ：/db/changelog/db.changelog-master.yaml＃更改日志配置路径。  
+liquibase.check-change-log-location = true  ＃检查更改日志位置是否存在。  
+liquibase.contexts =＃要使用的运行时上下文的逗号分隔列表。  
+liquibase.default-schema =＃默认数据库模式。  
+liquibase.drop-first = false  ＃删除数据库模式。  
+liquibase.enabled = true  ＃启用liquibase支持。  
+liquibase.labels =＃要使用的运行时标签的逗号分隔列表。  
+liquibase.parameters。* =＃更改日志参数。  
+liquibase.password =＃要迁移的数据库的登录密码。  
+liquibase.url =＃要迁移的数据库的JDBC URL。如果未设置，则使用主配置的数据源。  
+liquibase.user =＃要迁移的数据库的登录用户。  
+  
+＃DAO（PersistenceExceptionTranslationAutoConfiguration）  
+spring.dao.exceptiontranslation.enabled = true  ＃启用PersistenceExceptionTranslationPostProcessor。  
+  
+＃CASSANDRA（Cassandra属性）  
+spring.data.cassandra.cluster-name =＃Cassandra集群的名称。  
+spring.data.cassandra.compression =＃Cassandra二进制协议支持的压缩。  
+spring.data.cassandra.connect-timeout-millis =＃套接字选项：连接超时。  
+spring.data.cassandra.consistency-level =＃查询一致性级别。  
+spring.data.cassandra.contact-points = localhost  ＃群集节点地址的逗号分隔列表。  
+spring.data.cassandra.fetch-size =＃查询默认抓取大小。  
+spring.data.cassandra.keyspace-name =＃要使用的键空间名称。  
+spring.data.cassandra.load-balancing-policy =＃负载均衡策略的类名称。  
+spring.data.cassandra.port =＃Cassandra服务器的端口。  
+spring.data.cassandra.password =＃服务器的登录密码。  
+spring.data.cassandra.read-timeout-millis =＃Socket选项：读取超时。  
+spring.data.cassandra.reconnection-policy =＃重新连接策略类。  
+spring.data.cassandra.retry-policy =＃重试策略的类名。  
+spring.data.cassandra.serial-consistency-level =＃查询串行一致性级别。  
+spring.data.cassandra.ssl = false  ＃启用SSL支持。  
+spring.data.cassandra.username =＃服务器的登录用户。  
+  
+＃ELASTICSEARCH（ElasticsearchProperties）  
+spring.data.elasticsearch.cluster-name = elasticsearch  ＃Elasticsearch集群名称。  
+spring.data.elasticsearch.cluster-nodes =＃群集节点地址的逗号分隔列表。如果未指定，则启动客户机节点。  
+spring.data.elasticsearch.properties。* =＃用于配置客户端的其他属性。  
+spring.data.elasticsearch.repositories.enabled = true  ＃启用Elasticsearch存储库。  
+  
+＃MONGODB（MongoProperties）  
+spring.data.mongodb.authentication-database =＃认证数据库名称。  
+spring.data.mongodb.database = test  ＃数据库名称。  
+spring.data.mongodb.field命名策略 =＃要使用的FieldNamingStrategy的完全限定名称。  
+spring.data.mongodb.grid-fs-database =＃GridFS数据库名称。  
+spring.data.mongodb.host = localhost  ＃Mongo服务器主机。  
+spring.data.mongodb.password =＃mongo服务器的登录密码。  
+spring.data.mongodb.port = 27017  ＃Mongo服务器端口。  
+spring.data.mongodb.repositories.enabled = true  ＃启用Mongo存储库。  
+spring.data.mongodb.uri = mongodb ：// localhost / test＃Mongo数据库URI。设置时，将忽略主机和端口。  
+spring.data.mongodb.username =＃mongo服务器的登录用户。  
+  
+＃DATA REST（RepositoryRestProperties）  
+spring.data.rest.base-path =＃Spring Data REST用于公开资源库资源的基本路径。  
+spring.data.rest.default-page-size =＃默认的页面大小。  
+spring.data.rest.enable-enum-translation =＃通过Spring Data REST默认资源包启用枚举值转换。  
+spring.data.rest.limit-param-name =＃URL查询字符串参数的名称，指示一次返回的结果数。  
+spring.data.rest.max-page-size =＃最大页面大小。  
+spring.data.rest.page-param-name =＃指示要返回哪个页面的URL查询字符串参数的名称。  
+spring.data.rest.return-body-on-create =＃创建实体后返回响应体。  
+spring.data.rest.return-body-on-update =＃更新实体后返回响应体。  
+spring.data.rest.sort-param-name =＃URL查询字符串参数的名称，指示对结果进行排序的方向。  
+  
+＃SOLR（SolrProperties）  
+spring.data.solr.host = HTTP ：//127.0.0.1：8983 / Solr的＃Solr的主机。如果设置了“zk-host”，则忽略。  
+spring.data.solr.repositories.enabled = true  ＃启用Solr存储库。  
+spring.data.solr.zk-host =＃ZooKeeper主机地址，格式为HOST：PORT。  
+  
+＃DATASOURCE（DataSourceAutoConfiguration＆DataSourceProperties）  
+spring.datasource.continue-on-error = false  ＃初始化数据库时发生错误时不要停止。  
+spring.datasource.data =＃Data（DML）脚本资源引用。  
+spring.datasource.driver-class-name =＃JDBC驱动程序的标准名称。默认情况下基于URL自动检测。  
+spring.datasource.initialize = true  ＃使用'data.sql'填充数据库。  
+spring.datasource.jmx-enabled = false  ＃启用JMX支持（如果由底层池提供）。  
+spring.datasource.jndi-name =＃JNDI数据源的位置。类，url，用户名和密码设置时将被忽略。  
+spring.datasource.max-active =＃例如100  
+spring.datasource.max-idle =＃例8  
+spring.datasource.max-wait =  
+spring .datasource.min-evictable-idle-time-millis =  
+spring .datasource.min-idle = 8  
+spring.datasource.name = testdb  ＃数据源的名称。  
+spring.datasource.password =＃数据库的登录密码。  
+spring.datasource.platform = all  ＃在模式资源（schema - $ {platform} .sql）中使用的平台。  
+spring.datasource.schema =＃模式（DDL）脚本资源引用。  
+spring.datasource.separator =; ＃SQL初始化脚本中的语句分隔符。  
+spring.datasource.sql-script-encoding =＃SQL脚本编码。  
+spring.datasource.test-on-borrow =＃例如`false`  
+spring.datasource.test-on-return =＃例如`false`  
+spring.datasource.test-while-idle =＃  
+spring.datasource.time-between-eviction-runs-millis =  1  
+spring.datasource.type =＃要使用的连接池实现的完全限定名称。默认情况下，它是从类路径自动检测。  
+spring.datasource.url =＃数据库的JDBC url。  
+spring.datasource.username =  
+spring .datasource.validation-query =  
+  
+＃H2 Web控制台（H2ConsoleProperties）  
+spring.h2.console.enabled = false  ＃启用控制台。  
+spring.h2.console.path = / h2-console＃控制台可用的路径。  
+  
+＃JOOQ（JooqAutoConfiguration）  
+spring.jooq.sql-dialect =＃SQLDialect与配置的数据源通信时使用的JOOQ。例如`POSTGRES`  
+  
+＃JPA（JpaBaseConfiguration，HibernateJpaAutoConfiguration）  
+spring.data.jpa.repositories.enabled = true  ＃启用JPA存储库。  
+spring.jpa.database =＃要操作的目标数据库，默认情况下自动检测。也可以使用“databasePlatform”属性进行设置。  
+spring.jpa.database-platform =＃要操作的目标数据库的名称，默认情况下自动检测。可以选择使用“数据库”设置枚举。  
+spring.jpa.generate-ddl = false  ＃在启动时初始化模式。  
+spring.jpa.hibernate.ddl-auto =＃DDL模式。这实际上是“hibernate.hbm2ddl.auto”属性的快捷方式。使用嵌入式数据库时，默认为“create-drop”，否则为“none”。  
+spring.jpa.hibernate.naming-strategy =＃命名策略完全限定名。  
+spring.jpa.open-in-view = true  ＃注册OpenEntityManagerInViewInterceptor。将JPA EntityManager绑定到线程以进行请求的整个处理。  
+spring.jpa.properties。* =＃在JPA提供程序上设置的其他本机属性。  
+spring.jpa.show-sql = false  ＃启用SQL语句的日志记录。  
+  
+＃JTA（JtaAutoConfiguration）  
+spring.jta。* =＃技术特定配置  
+spring.jta.log-dir =＃事务日志目录。  
+  
+＃ATOMIKOS  
+spring.jta.atomikos.connectionfactory.borrow-connection-timeout = 30  ＃从池借用连接的超时（以秒为单位）。  
+spring.jta.atomikos.connectionfactory.ignore-session-transacted-flag = true  ＃创建会话时是否忽略事务标志。  
+spring.jta.atomikos.connectionfactory.local-transaction-mode = false  ＃是否需要本地事务。  
+spring.jta.atomikos.connectionfactory.maintenance-interval = 60  ＃池维护线程运行之间的时间（以秒为单位）。  
+spring.jta.atomikos.connectionfactory.max-idle-time = 60  ＃从池中清除连接的时间（以秒为单位）。  
+spring.jta.atomikos.connectionfactory.max-lifetime = 0  ＃连接在被销毁之前可以被合并的时间（以秒为单位）。0表示无限制。  
+spring.jta.atomikos.connectionfactory.max-pool-size = 1  ＃池的最大大小。  
+spring.jta.atomikos.connectionfactory.min-pool-size = 1  ＃池的最小大小。  
+spring.jta.atomikos.connectionfactory.reap-timeout = 0  ＃借用连接的收集超时（以秒为单位）。0表示无限制。  
+spring.jta.atomikos.connectionfactory.unique-resource-name = jmsConnectionFactory  ＃用于在恢复期间标识资源的唯一名称。  
+spring.jta.atomikos.datasource.borrow-connection-timeout = 30  ＃从池借用连接的超时（以秒为单位）。  
+spring.jta.atomikos.datasource.default-isolation-level =＃池提供的连接的默认隔离级别。  
+spring.jta.atomikos.datasource.login-timeout =＃建立数据库连接的超时（以秒为单位）。  
+spring.jta.atomikos.datasource.maintenance-interval = 60  ＃池维护线程运行之间的时间（以秒为单位）。  
+spring.jta.atomikos.datasource.max-idle-time = 60  ＃从池中清除连接的时间（以秒为单位）。  
+spring.jta.atomikos.datasource.max-lifetime = 0  ＃连接在被销毁之前可以被合并的时间（以秒为单位）。0表示无限制。  
+spring.jta.atomikos.datasource.max-pool-size = 1  ＃池的最大大小。  
+spring.jta.atomikos.datasource.min-pool-size = 1  ＃池的最小大小。  
+spring.jta.atomikos.datasource.reap-timeout = 0  ＃借用连接的收集超时（以秒为单位）。0表示无限制。  
+spring.jta.atomikos.datasource.test-query =＃用于在返回连接之前验证连接的SQL查询或语句。  
+spring.jta.atomikos.datasource.unique-resource-name = dataSource  ＃用于在恢复期间标识资源的唯一名称。  
+  
+＃BITRONIX  
+spring.jta.bitronix.connectionfactory.acquire-increment = 1  ＃增加池时创建的连接数。  
+spring.jta.bitronix.connectionfactory.acquisition-interval = 1  ＃在获取无效连接后再次尝试获取连接之前等待的时间（以秒为单位）。  
+spring.jta.bitronix.connectionfactory.acquisition-timeout = 30  ＃从池中获取连接的超时（以秒为单位）。  
+spring.jta.bitronix.connectionfactory.allow-local-transactions = true  ＃事务管理器是否应该允许混合XA和非XA事务。  
+spring.jta.bitronix.connectionfactory.apply-transaction-timeout = false  ＃是否应该在登记时在XAResource上设置事务超时。  
+spring.jta.bitronix.connectionfactory.automatic-enlisting-enabled = true  ＃资源是否应自动注册和删除。  
+spring.jta.bitronix.connectionfactory.cache-producers-consumers = true  ＃是否生产和消费者应该被缓存。  
+spring.jta.bitronix.connectionfactory.defer-connection-release = true  ＃提供程序是否可以在同一连接上运行多个事务，并支持事务交叉。  
+spring.jta.bitronix.connectionfactory.ignore-recovery-failures = false  ＃是否应该忽略恢复失败。  
+spring.jta.bitronix.connectionfactory.max-idle-time = 60  ＃从池中清除连接的时间（以秒为单位）。  
+spring.jta.bitronix.connectionfactory.max-pool-size = 10  ＃池的最大大小。0表示无限制。  
+spring.jta.bitronix.connectionfactory.min-pool-size = 0  ＃池的最小大小。  
+spring.jta.bitronix.connectionfactory.password =＃用于连接到JMS提供程序的密码。  
+spring.jta.bitronix.connectionfactory.share-transaction-connections = false  ＃是否可以在事务上下文中共享处于ACCESSIBLE状态的连接。  
+spring.jta.bitronix.connectionfactory.test-connections = true  ＃从池中获取连接时是否应该进行测试。  
+spring.jta.bitronix.connectionfactory.two-pc-ordering-position = 1  ＃此资源在两阶段提交期间应采用的位置（始终为Integer.MIN_VALUE，始终为Integer.MAX_VALUE）。  
+spring.jta.bitronix.connectionfactory.unique-name = jmsConnectionFactory  ＃用于在恢复期间标识资源的唯一名称。  
+spring.jta.bitronix.connectionfactory.use-tm-join = true  启动XAResources时是否应使用TMJOIN。  
+spring.jta.bitronix.connectionfactory.user =＃用于连接到JMS提供程序的用户。  
+spring.jta.bitronix.datasource.acquire-increment = 1  ＃增加池时创建的连接数。  
+spring.jta.bitronix.datasource.acquisition-interval = 1  ＃在获取无效连接后再次尝试获取连接之前等待的时间（以秒为单位）。  
+spring.jta.bitronix.datasource.acquisition-timeout = 30  ＃从池中获取连接的超时（以秒为单位）。  
+spring.jta.bitronix.datasource.allow-local-transactions = true  ＃事务管理器是否应允许混合XA和非XA事务。  
+spring.jta.bitronix.datasource.apply-transaction-timeout = false  ＃是否应该在登记时在XAResource上设置事务超时。  
+spring.jta.bitronix.datasource.automatic-enlisting-enabled = true  ＃资源是否应自动注册和删除。  
+spring.jta.bitronix.datasource.cursor-holdability =＃连接的默认游标保留能力。  
+spring.jta.bitronix.datasource.defer-connection-release = true  ＃数据库是否可以在同一连接上运行多个事务，并支持事务交叉。  
+spring.jta.bitronix.datasource.enable-jdbc4-connection-test =＃从池中获取连接时是否调用Connection.isValid（）。  
+spring.jta.bitronix.datasource.ignore-recovery-failures = false  ＃是否应该忽略恢复失败。  
+spring.jta.bitronix.datasource.isolation-level =＃连接的默认隔离级别。  
+spring.jta.bitronix.datasource.local-auto-commit =＃本地事务的默认自动提交模式。  
+spring.jta.bitronix.datasource.login-timeout =＃建立数据库连接的超时（以秒为单位）。  
+spring.jta.bitronix.datasource.max-idle-time = 60  ＃从池中清除连接的时间（以秒为单位）。  
+spring.jta.bitronix.datasource.max-pool-size = 10  ＃池的最大大小。0表示无限制。  
+spring.jta.bitronix.datasource.min-pool-size = 0  ＃池的最小大小。  
+spring.jta.bitronix.datasource.prepared-statement-cache-size = 0  ＃预准备语句缓存的目标大小。0禁用高速缓存。  
+spring.jta.bitronix.datasource.share-transaction-connections = false  ＃是否可以在事务上下文中共享处于ACCESSIBLE状态的连接。  
+spring.jta.bitronix.datasource.test-query =＃用于在返回连接之前验证连接的SQL查询或语句。  
+spring.jta.bitronix.datasource.two-pc-ordering-position = 1  ＃这个资源在两阶段提交期间应该采用的位置（始终为Integer.MIN_VALUE，始终为Integer.MAX_VALUE）。  
+spring.jta.bitronix.datasource.unique-name = dataSource  ＃用于在恢复期间标识资源的唯一名称。  
+spring.jta.bitronix.datasource.use-tm-join = true  启动XAResources时是否应使用TMJOIN。  
+  
+＃EMBEDDED MONGODB（EmbeddedMongoProperties）  
+spring.mongodb.embedded.features = SYNC_DELAY  ＃要启用的功能的逗号分隔列表。  
+spring.mongodb.embedded.version = 2 .6.10＃使用Mongo的版本。  
+  
+＃REDIS（RedisProperties）  
+spring.redis.database = 0  ＃连接工厂使用的数据库索引。  
+spring.redis.host = localhost  ＃Redis服务器主机。  
+spring.redis.password =＃redis服务器的登录密码。  
+spring.redis.pool.max-active = 8  ＃池在给定时间可以分配的最大连接数。使用负值无限制。  
+spring.redis.pool.max-idle = 8  ＃池中“空闲”连接的最大数量。使用负值来表示无限数量的空闲连接。  
+spring.redis.pool.max-wait = -1＃在池耗尽时抛出异常之前，连接分配应阻止的最大时间量（以毫秒为单位）。使用负值无限期地阻止。  
+spring.redis.pool.min-idle = 0  ＃要在池中维护的空闲连接的最小数目的目标。此设置仅当其为正时才具有效果。  
+spring.redis.port = 6379  ＃Redis服务器端口。  
+spring.redis.sentinel.master =＃Redis服务器的名称。  
+spring.redis.sentinel.nodes =＃主机：端口对的逗号分隔列表。  
+spring.redis.timeout = 0  ＃连接超时，以毫秒为单位。  
+  
+  
+＃----------------------------------------  
+＃集成属性  
+＃----------------------------------------  
+  
+＃ACTIVEMQ（ActiveMQProperties）  
+spring.activemq.broker-url =＃ActiveMQ代理的URL。默认情况下自动生成。例如`tcp：// localhost：61616`  
+spring.activemq.in-memory = true  ＃指定默认代理URL是否应该在内存中。如果指定了显式代理，则忽略。  
+spring.activemq.password =＃代理的登录密码。  
+spring.activemq.pooled = false  ＃指定是否应创建PooledConnectionFactory而不是常规ConnectionFactory。  
+spring.activemq.user =＃代理的登录用户。  
+  
+＃ARTEMIS（ArtemisProperties）  
+spring.artemis.embedded.cluster-password =＃集群密码。默认情况下，在启动时随机生成。  
+spring.artemis.embedded.data-directory =＃日志文件目录。如果持久性已关闭，则不需要。  
+spring.artemis.embedded.enabled = true  ＃如果Artemis服务器API可用，则启用嵌入模式。  
+spring.artemis.embedded.persistent = false  ＃启用持久存储。  
+spring.artemis.embedded.queues =＃在启动时创建的逗号分隔的队列列表。  
+spring.artemis.embedded.server-id =＃服务器ID。默认情况下，使用自动递增计数器。  
+spring.artemis.embedded.topics =＃启动时创建的逗号分隔的主题列表。  
+spring.artemis.host = localhost  ＃Artemis代理主机。  
+spring.artemis.mode =＃Artemis部署模式，默认情况下自动检测。可以显式设置为“本机”或“嵌入”。  
+spring.artemis.port = 61616  ＃Artemis代理端口。  
+  
+＃SPRING BATCH（BatchProperties）  
+spring.batch.initializer.enabled = true  ＃如果需要，在启动时创建所需的批处理表。  
+spring.batch.job.enabled = true  ＃在启动时在上下文中执行所有Spring Batch作业。  
+spring.batch.job.names =＃在启动时执行的作业名的逗号分隔列表（例如`job1，job2`）。默认情况下，在上下文中找到的所有作业都将被执行。  
+spring.batch.schema = classpath ：org / springframework / batch / core / schema - @@ platform @@。sql＃用于初始化数据库模式的SQL文件的路径。  
+spring.batch.table-prefix =＃所有批次元数据表的表前缀。  
+  
+＃HORNETQ（HornetQProperties）  
+spring.hornetq.embedded.cluster-password =＃群集密码。默认情况下，在启动时随机生成。  
+spring.hornetq.embedded.data-directory =＃日志文件目录。如果持久性已关闭，则不需要。  
+spring.hornetq.embedded.enabled = true  ＃如果HornetQ服务器API可用，则启用嵌入模式。  
+spring.hornetq.embedded.persistent = false  ＃启用持久存储。  
+spring.hornetq.embedded.queues =＃在启动时创建的逗号分隔的队列列表。  
+spring.hornetq.embedded.server-id =＃服务器ID。默认情况下，使用自动递增计数器。  
+spring.hornetq.embedded.topics =＃启动时创建的逗号分隔的主题列表。  
+spring.hornetq.host = localhost  ＃HornetQ代理主机。  
+spring.hornetq.mode =＃HornetQ部署模式，默认情况下自动检测。可以显式设置为“本机”或“嵌入”。  
+spring.hornetq.port = 5445  ＃HornetQ代理端口。  
+  
+＃JMS（JmsProperties）  
+spring.jms.jndi-name =＃连接工厂JNDI名称。设置时，优先于其他连接工厂自动配置。  
+spring.jms.listener.acknowledge-mode =＃确认容器的模式。默认情况下，侦听器使用自动确认进行处理。  
+spring.jms.listener.auto-startup = true  ＃在启动时自动启动容器。  
+spring.jms.listener.concurrency =＃最小并发消费者数。  
+spring.jms.listener.max-concurrency =＃最大并发消费者数。  
+spring.jms.pub-sub-domain = false  ＃指定默认目标类型是否为主题。  
+  
+＃RABBIT（RabbitProperties）  
+spring.rabbitmq.addresses =＃客户端应连接到的地址的逗号分隔列表。  
+spring.rabbitmq.dynamic = true  ＃创建一个AmqpAdmin bean。  
+spring.rabbitmq.host = localhost  ＃RabbitMQ主机。  
+spring.rabbitmq.listener.acknowledge-mode =＃确认容器的模式。  
+spring.rabbitmq.listener.auto-startup = true  ＃在启动时自动启动容器。  
+spring.rabbitmq.listener.concurrency =＃最小消费者数。  
+spring.rabbitmq.listener.max-concurrency =＃最大消费者数。  
+spring.rabbitmq.listener.prefetch =＃在单个请求中处理的消息数。它应该大于或等于事务大小（如果使用）。  
+spring.rabbitmq.listener.transaction-size =＃要在事务中处理的消息数。为了获得最佳结果，它应小于或等于预取计数。  
+spring.rabbitmq.password =＃登录以对代理进行身份验证。  
+spring.rabbitmq.port = 5672  ＃RabbitMQ端口。  
+spring.rabbitmq.requested-heartbeat =＃请求的心跳超时，以秒为单位; 零为零。  
+spring.rabbitmq.ssl.enabled = false  ＃启用SSL支持。  
+spring.rabbitmq.ssl.key-store =＃包含SSL证书的密钥库的路径。  
+spring.rabbitmq.ssl.key-store-password =＃用于访问密钥库的密码。  
+spring.rabbitmq.ssl.trust-store =＃持有SSL证书的信任存储。  
+spring.rabbitmq.ssl.trust-store-password =＃用于访问信任存储库的密码。  
+spring.rabbitmq.username =＃登录用户以对代理进行身份验证。  
+spring.rabbitmq.virtual-host =＃连接到代理时要使用的虚拟主机。  
+  
+  
+＃----------------------------------------  
+＃执行器特性  
+＃----------------------------------------  
+  
+＃ENDPOINTS（AbstractEndpoint subclasses）  
+endpoints.enabled = true  ＃启用端点。  
+endpoints.sensitive =＃默认端点敏感设置。  
+endpoints.actuator.enabled = true  ＃启用端点。  
+endpoints.actuator.path =＃端点URL路径。  
+endpoints.actuator.sensitive = false  ＃在端点上启用安全性。  
+endpoints.autoconfig.enabled =＃启用端点。  
+endpoints.autoconfig.id =＃端点标识符。  
+endpoints.autoconfig.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.beans.enabled =＃启用端点。  
+endpoints.beans.id =＃端点标识符。  
+endpoints.beans.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.configprops.enabled =＃启用端点。  
+endpoints.configprops.id =＃终端标识符。  
+endpoints.configprops.keys-to-sanitize = password ，secret，key，。* credentials。*，vcap_services＃应该进行清理的密钥。键可以是属性结尾的简单字符串或正则表达式。  
+endpoints.configprops.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.docs.curies.enabled = false  ＃启用居里生成。  
+endpoints.docs.enabled = true  ＃启用执行器docs端点。  
+endpoints.docs.path = / docs＃  
+endpoints.docs.sensitive = false  ＃  
+endpoints.dump.enabled =＃启用端点。  
+endpoints.dump.id =＃端点标识符。  
+endpoints.dump.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.env.enabled =＃启用端点。  
+endpoints.env.id =＃端点标识符。  
+endpoints.env.keys-to-sanitize = password ，secret，key，。* credentials。*，vcap_services＃应该清理的密钥。键可以是属性结尾的简单字符串或正则表达式。  
+endpoints.env.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.flyway.enabled =＃启用端点。  
+endpoints.flyway.id =＃端点标识符。  
+endpoints.flyway.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.health.enabled =＃启用端点。  
+endpoints.health.id =＃端点标识符。  
+endpoints.health.mapping。* =＃将健康状态映射到HttpStatus代码。默认情况下，注册的健康状态映射到明智的默认值（即UP映射到200）。  
+endpoints.health.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.health.time-to-live = 1000  ＃缓存结果的生存时间（以毫秒为单位）。  
+endpoints.info.enabled =＃启用端点。  
+endpoints.info.id =＃端点标识符。  
+endpoints.info.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.jolokia.enabled = true  ＃启用Jolokia端点。  
+endpoints.jolokia.path = / jolokia＃端点URL路径。  
+endpoints.jolokia.sensitive = true  ＃在端点上启用安全性。  
+endpoints.liquibase.enabled =＃启用端点。  
+endpoints.liquibase.id =＃端点标识符。  
+endpoints.liquibase.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.logfile.enabled = true  ＃启用端点。  
+endpoints.logfile.path = / logfile＃端点URL路径。  
+endpoints.logfile.sensitive = true  ＃在端点上启用安全性。  
+endpoints.mappings.enabled =＃启用端点。  
+endpoints.mappings.id =＃端点标识符。  
+endpoints.mappings.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.metrics.enabled =＃启用端点。  
+endpoints.metrics.filter.enabled = true  ＃启用metrics servlet筛选器。  
+endpoints.metrics.id =＃端点标识符。  
+endpoints.metrics.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.shutdown.enabled =＃启用端点。  
+endpoints.shutdown.id =＃端点标识符。  
+endpoints.shutdown.sensitive =＃标记端点是否暴露敏感信息。  
+endpoints.trace.enabled =＃启用端点。  
+endpoints.trace.id =＃端点标识符。  
+endpoints.trace.sensitive =＃标记端点是否暴露敏感信息。  
+  
+＃ENDPOINTS CORS CONFIGURATION（EndpointCorsProperties）  
+endpoints.cors.allow-credentials =＃设置是否支持凭证。未设置时，不支持凭据。  
+endpoints.cors.allowed-headers =＃在请求中允许的逗号分隔的标头列表。'*'允许所有头。  
+endpoints.cors.allowed-methods = GET  ＃允许的逗号分隔的方法列表。'*'允许所有方法。  
+endpoints.cors.allowed-origins =＃允许的逗号分隔的起始列表。'*'允许所有起源。未设置时，禁用CORS支持。  
+endpoints.cors.exposed-headers =＃要在响应中包含的标头的逗号分隔列表。  
+endpoints.cors.max-age = 1800  ＃客户端可以缓存来自预先请求的响应的缓存时间（秒）。  
+  
+＃JMX ENDPOINT（EndpointMBeanExportProperties）  
+endpoints.jmx.domain =＃JMX域名。如果设置，则使用'spring.jmx.default-domain'的值初始化。  
+endpoints.jmx.enabled = true  ＃启用所有端点的JMX导出。  
+endpoints.jmx.static-names =＃附加到表示端点的MBeans的所有ObjectNames的附加静态属性。  
+endpoints.jmx.unique-names = false  ＃确保在冲突的情况下修改ObjectName。  
+  
+＃JOLOKIA（JolokiaProperties）  
+jolokia.config。* =＃请参阅Jolokia手册  
+  
+＃MANAGEMENT HTTP SERVER（ManagementServerProperties）  
+management.add-application-context-header = true  ＃在每个响应中添加“X-Application-Context”HTTP头。  
+management.address =＃管理端点应绑定的网络地址。  
+management.context-path =＃管理端点上下文路径。例如`/ actuator'  
+management.port =＃管理端点HTTP端口。默认情况下，使用与应用程序相同的端口。  
+management.security.enabled = true  ＃启用安全性。  
+management.security.role = ADMIN  ＃访问管理端点所需的角色。  
+management.security.sessions = stateless  ＃会话创建要使用的策略（始终，永远，if_required，无状态）。  
+  
+＃健康指数（以前的健康。*）  
+management.health.db.enabled = true  ＃启用数据库运行状况检查。  
+management.health.defaults.enabled = true  ＃启用默认运行状况指示器。  
+management.health.diskspace.enabled = true  ＃启用磁盘空间运行状况检查。  
+management.health.diskspace.path =＃用于计算可用磁盘空间的路径。  
+management.health.diskspace.threshold = 0  ＃应该可用的最小磁盘空间（以字节为单位）。  
+management.health.elasticsearch.enabled = true  ＃启用elasticsearch运行状况检查。  
+management.health.elasticsearch.indices =＃逗号分隔的索引名称。  
+management.health.elasticsearch.response-timeout = 100  ＃等待集群响应的时间（以毫秒为单位）。  
+management.health.jms.enabled = true  ＃启用JMS运行状况检查。  
+management.health.mail.enabled = true  ＃启用邮件运行状况检查。  
+management.health.mongo.enabled = true  ＃启用MongoDB运行状况检查。  
+management.health.rabbit.enabled = true  ＃启用RabbitMQ运行状况检查。  
+management.health.redis.enabled = true  ＃启用Redis运行状况检查。  
+management.health.solr.enabled = true  ＃启用Solr运行状况检查。  
+management.health.status.order = DOWN ，OUT_OF_SERVICE，UNKNOWN，UP＃按严重性顺序列出健康状态的逗号分隔列表。  
+  
+＃TRACING（（TraceProperties）  
+management.trace.include = request -headers，response-headers，errors＃要包括在跟踪中的项目。  
+  
+＃遥控器  
+shell.auth = simple  ＃认证类型。根据环境自动检测。  
+shell.auth.jaas.domain = my -domain＃JAAS域。  
+shell.auth.key.path =＃认证密钥的路径。这应该指向一个有效的“.pem”文件。  
+shell.auth.simple.user.name = user  ＃登录用户。  
+shell.auth.simple.user.password =＃登录密码。  
+shell.auth.spring.roles = ADMIN  ＃登录到CRaSH控制台的必需角色的逗号分隔列表。  
+shell.command-path-patterns = classpath *：/ commands / **，classpath *：/ crash / commands / **＃用于查找命令的模式。  
+shell.command-refresh-interval = -1＃扫描更改并在必要时更新命令（以秒为单位）。  
+shell.config-path-patterns = classpath *：/ crash / *＃用于查找配置的模式。  
+shell.disabled-commands = jpa *，jdbc *，jndi *＃禁用的逗号分隔的命令列表。  
+shell.disabled-plugins =＃禁用的逗号分隔的插件列表。某些插件根据环境默认禁用。  
+shell.ssh.auth-timeout  =＃用户将被提示再次登录的毫秒数。  
+shell.ssh.enabled = true  ＃启用CRaSH SSH支持。  
+shell.ssh.idle-timeout  =＃未使用的连接关闭之前的毫秒数。  
+shell.ssh.key-path =＃SSH服务器密钥的路径。  
+shell.ssh.port = 2000  ＃SSH端口。  
+shell.telnet.enabled = false  ＃启用CRaSH telnet支持。如果TelnetPlugin可用，默认情况下启用。  
+shell.telnet.port = 5000  ＃Telnet端口。  
+  
+＃GIT INFO  
+spring.git.properties =＃对生成的git信息属性文件的资源引用。  
+  
+＃METRICS EXPORT（MetricExportProperties）  
+spring.metrics.export.aggregate.key-pattern =＃告诉聚合器如何处理源存储库中的键的模式。  
+spring.metrics.export.aggregate.prefix =＃如果处于活动状态，则为全局存储库的前缀。  
+spring.metrics.export.delay-millis = 5000  ＃导出ticks之间的延迟（以毫秒为单位）。度量标准将按照此延迟的计划导出到外部源。  
+spring.metrics.export.enabled = true  ＃标记以启用度量导出（假设MetricWriter可用）。  
+spring.metrics.export.excludes =＃要排除的指标名称的模式列表。应用后包括。  
+spring.metrics.export.includes =＃要包括的指标名称的模式列表。  
+spring.metrics.export.redis.key = keys .spring.metrics＃redis存储库导出的键（如果为活动状态）。  
+spring.metrics.export.redis.prefix = spring .metrics＃redis存储库的前缀（如果活动）。  
+spring.metrics.export.send-latest =＃根据不导出不变的度量标准值，关闭任何可用的优化。  
+spring.metrics.export.statsd.host =＃接收导出指标的statsd服务器的主机。  
+spring.metrics.export.statsd.port = 8125  ＃用于接收导出指标的statsd服务器的端口。  
+spring.metrics.export.statsd.prefix =＃statsd导出的指标的前缀。  
+spring.metrics.export.triggers。* =＃每个MetricWriter bean名称的特定触发器属性。  
+  
+  
+＃----------------------------------------  
+＃DEVTOOLS PROPERTIES  
+＃----------------------------------------  
+  
+＃DEVTOOLS（DevToolsProperties）  
+spring.devtools.livereload.enabled = true  ＃启用livereload.com兼容的服务器。  
+spring.devtools.livereload.port = 35729  ＃服务器端口。  
+spring.devtools.restart.additional-exclude =＃应该排除触发完全重新启动的其他模式。  
+spring.devtools.restart.additional-paths =＃监视更改的其他路径。  
+spring.devtools.restart.enabled = true  ＃启用自动重新启动。  
+spring.devtools.restart.exclude = META -INF / maven / **，META-INF / resources / **，resources / **，static / **，public / **，templates / **，** / Test.class，** / * Tests.class，git.properties＃应该排除触发完全重新启动的模式。  
+spring.devtools.restart.poll-interval = 1000  ＃轮询类路径更改之间等待的时间（以毫秒为单位）。  
+spring.devtools.restart.quiet-period = 400  ＃触发重新启动之前，没有任何类路径更改所需的安静时间量（以毫秒为单位）。  
+spring.devtools.restart.trigger-file =＃更改时将触发重新启动检查的特定文件的名称。如果没有指定任何classpath文件更改将触发重新启动。   
+  
+＃REMOTE DEVTOOLS（RemoteDevToolsProperties）  
+spring.devtools.remote.context-path = /。~~ spring-boot！〜＃上下文路径用于处理远程连接。  
+spring.devtools.remote.debug.enabled = true  ＃启用远程调试支持。  
+spring.devtools.remote.debug.local-port = 8000  ＃本地远程调试服务器端口。  
+spring.devtools.remote.proxy.host =＃用于连接到远程应用程序的代理的主机。  
+spring.devtools.remote.proxy.port =＃用于连接到远程应用程序的代理端口。  
+spring.devtools.remote.restart.enabled = true  ＃启用远程重新启动。  
+spring.devtools.remote.secret =＃建立连接所需的共享密钥（启用远程支持所需）。  
+spring.devtools.remote.secret-header-name = X -AUTH-TOKEN＃用于传输共享密钥的HTTP头。  

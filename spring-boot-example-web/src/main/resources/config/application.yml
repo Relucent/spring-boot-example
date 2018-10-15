@@ -42,6 +42,10 @@ server:
 #  keyStoreType: PKCS12
 #  keyAlias: keystore
 
+banner:
+  charset: UTF-8
+  location: classpath:config
+
 spring: 
 # mvc:
 #  view: 
