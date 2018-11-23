@@ -75,7 +75,7 @@ management:
 #  password: admin
  info:
   git:
-   mode:full
+   mode: full
 
 application: 
  name: 'Example'
@@ -87,5 +87,6 @@ logging:
  level: 
   root: ERROR
   org.springframework: ERROR
+  yyl.springboot.Application: INFO
 
 ... 
