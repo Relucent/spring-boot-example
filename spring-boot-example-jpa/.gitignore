@@ -1,25 +1,51 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
+# Compile files
+*.class
 
-### STS ###
-.apt_generated
+# Package Files
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# Maven
+target/
+*.ser
+*.ec
+
+# J2ME
+.mtj.tmp/
+
+# Eclipse
 .classpath
-.factorypath
 .project
-.settings
+.settings/
+.metadata/
+.factorypath
 .springBeans
-.sts4-cache
 
-### IntelliJ IDEA ###
-.idea
+# IntelliJ Idea
+.idea/
+out/
+*.ipr
 *.iws
 *.iml
-*.ipr
 
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# BlueJ Files
+*.ctxt
+
+# OS X
+.DS_Store
+
+# Window
+Thumbs.db
+
+# Virtual Machine Crash Logs
+hs_err_pid*
+
+# Log File
+*.log
+*.log.*
