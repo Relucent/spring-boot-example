@@ -38,6 +38,8 @@ Spring Boot 2.x
 
 - [spring-boot-example-mongodb](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-mongodb)：Mongodb 使用示例   
 
+- [spring-boot-example-null-include-lib-pack](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-null-include-lib-pack)：打包时排除依赖包的示例（打包时候将依赖JAR分离）
+
 - [spring-boot-example-shiro](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-shiro)：集成Shiro安全框架示例       
 
 - [spring-boot-example-elasticsearch](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-elasticsearch)：集成 Elasticsearch(全文搜索引擎) 示例       
