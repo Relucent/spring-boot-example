@@ -5,7 +5,7 @@
 	<groupId>yyl</groupId>
 	<artifactId>spring-boot-example-null-include-lib-pack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>spring-boot-example-null-include-lib-pack</name>
 	<description>Demo project for Spring Boot</description>
@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.7.RELEASE</version>
+		<version>2.1.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
