@@ -1,6 +1,9 @@
 CREATE TABLE IF NOT EXISTS `hello` (
- `id`    BIGINT(11)   NOT NULL auto_increment,
- `name`  VARCHAR(255) NOT NULL,
- `value` VARCHAR(255) NOT NULL,
+ `id`         BIGINT(20)   NOT NULL auto_increment,
+ `name`       VARCHAR(255) NOT NULL,
+ `value`      VARCHAR(255) NOT NULL,
+ `deleted`    INTEGER(10)  NOT NULL DEFAULT 0,
+ `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
  PRIMARY KEY  (`id`)
 );

@@ -10,54 +10,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-
 import yyl.springboot.entity.Hello;
-import yyl.springboot.mapper.HelloMapper;
+import yyl.springboot.service.HelloService;
 
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
 
-    @Autowired
-    private HelloMapper helloMapper;
+	@Autowired
+	private HelloService helloService;
 
-    // | /hello/
-    @GetMapping("/")
-    public Object findAll() {
-        return helloMapper.selectList(Wrappers.emptyWrapper());
-    }
+	// | /hello/
+	@GetMapping("/")
+	public Object findAll() {
+		return helloService.findAll();
+	}
 
-    // | /hello/{id}
-    @GetMapping("/{id}")
-    public Object getById(@PathVariable Long id) {
-        return helloMapper.selectById(id);
-    }
+	// | /hello/{id}
+	@GetMapping("/{id}")
+	public Object getById(@PathVariable Long id) {
+		return helloService.getById(id);
+	}
 
-    // | /hello/
-    @PostMapping("/")
-    public Object save(@RequestBody Hello model) {
-        Long id = model.getId();
-        if (id == null) {
-            helloMapper.insert(model);
-        } else {
-            helloMapper.updateById(model);
-        }
-        return Boolean.TRUE;
-    }
+	// | /hello/
+	@PostMapping("/")
+	public Object save(@RequestBody Hello model) {
+		helloService.save(model);
+		return Boolean.TRUE;
+	}
 
-    // | /hello/{id}
-    @PutMapping(value = "/{id}")
-    public Object update(@PathVariable Long id, @RequestBody Hello model) {
-        model.setId(id);
-        helloMapper.updateById(model);
-        return Boolean.TRUE;
-    }
+	// | /hello/{id}
+	@PutMapping(value = "/{id}")
+	public Object update(@PathVariable Long id, @RequestBody Hello model) {
+		model.setId(id);
+		helloService.updateById(model);
+		return Boolean.TRUE;
+	}
 
-    // | /hello/{id}
-    @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") Long id) {
-        helloMapper.deleteById(id);
-    }
-
+	// | /hello/{id}
+	@DeleteMapping(value = "/{id}")
+	public Object delete(@PathVariable("id") Long id) {
+		helloService.deleteById(id);
+		return Boolean.TRUE;
+	}
 }
