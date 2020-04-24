@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -79,5 +80,10 @@ public class ConsumerComponent {
 		consumer.start();
 		// 打印日志
 		System.out.println("consumer.start()");
+	}
+
+	@PreDestroy
+	public void shutdown() {
+		consumer.shutdown();
 	}
 }
