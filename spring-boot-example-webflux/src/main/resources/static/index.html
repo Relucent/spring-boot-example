@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello</title>
+<style type="text/css">
+.layout-side {
+	position: fixed
+}
+
+.layout-body {
+	position: absolute;
+	width: 60%;
+	height: 80%;
+	left: 30%;
+}
+</style>
+</head>
+<body>
+	<h1>Hello Spring Boot</h1>
+	<ul class="layout-side">
+		<li><a href="about:blank" target="frame">about:blank</a></li>
+		<li><a href="/hello" target="frame">/hello</a></li>
+		<li><a href="/mono" target="frame">/mono</a></li>
+		<li><a href="/flux" target="frame">/flux</a></li>
+		<li><a href="/stream" target="_black">/stream</a></li>
+	</ul>
+	<iframe class="layout-body" name="frame" src="about:blank"> </iframe>
+</body>
+</html>
