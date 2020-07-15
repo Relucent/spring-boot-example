@@ -8,17 +8,27 @@
 		<version>${revision}</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>spring-boot-example-banner</artifactId>
+	<artifactId>spring-boot-example-undertow</artifactId>
 
-	<name>spring-boot-example-banner</name>
+	<name>spring-boot-example-undertow</name>
 	<description>Demo project for Spring Boot</description>
 
 	<dependencies>
 
-		<!-- _spring-boot -->
+		<!-- _spring-boot-web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
 
 		<!-- _test -->
