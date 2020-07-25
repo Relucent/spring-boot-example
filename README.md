@@ -45,4 +45,4 @@ Spring Boot 2.x
 | [spring-boot-example-undertow](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-undertow) | Spring Boot Thymeleaf 使用示例|
 | [spring-boot-example-web](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-web) | SpringBoot1.x示例|
 | [spring-boot-example-webflux](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-webflux) | Spring Boot 集成 Webflux 示例|
-
+| [spring-boot-example-websocket](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-websocket) | Spring Boot 集成 WebSocket示例|

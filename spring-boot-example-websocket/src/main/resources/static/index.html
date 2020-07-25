@@ -23,19 +23,19 @@ ol, ul, li {
 	height: 500px;
 }
 
-label.sid {
+label.uid {
 	display: inline-block;
 	width: 100px;
 	margin-left: 250px;
 	text-align: right;
 }
 
-#sid, #text {
+#uid, #text {
 	margin: 1px;
 	border: 1px solid #8888ff;
 }
 
-#sid {
+#uid {
 	width: 120px;
 }
 
@@ -51,7 +51,7 @@ label.sid {
 <body>
 	<ul>
 		<li><textarea id="message"></textarea></li>
-		<li><label class="sid">SID: </label> <input id="sid" type="text" value="1"> <input id="connect" type="button" value="连接" /></li>
+		<li><label class="uid">uid: </label> <input id="uid" type="text" value="1"> <input id="connect" type="button" value="连接" /></li>
 		<li><input id="text" type="text" value="" /><input id="send" type="button" value="发送" /></li>
 	</ul>
 </body>
@@ -102,7 +102,7 @@ label.sid {
 
 	var EL = {
 		message : document.querySelector('#message'),
-		sid : document.querySelector('#sid'),
+		uid : document.querySelector('#uid'),
 		connect : document.querySelector('#connect'),
 		text : document.querySelector('#text'),
 		send : document.querySelector('#send')
@@ -131,7 +131,7 @@ label.sid {
 	};
 
 	EL.connect.addEventListener('click', function() {
-		oSocketEngine.connect('ws://localhost:8080/websocket/hello/' + EL.sid.value);
+		oSocketEngine.connect('ws://localhost:8080/websocket/hello/' + EL.uid.value);
 	}, false);
 
 	EL.send.addEventListener('click', function() {
