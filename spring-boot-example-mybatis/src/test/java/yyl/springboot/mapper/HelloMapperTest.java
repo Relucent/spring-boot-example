@@ -25,18 +25,18 @@ public class HelloMapperTest {
 	}
 
 	@Test
-	public void testQuery() throws Exception {
-		for (Hello hello : helloMapper.findAll()) {
-			System.out.println(hello);
-		}
+	public void testUpdate() throws Exception {
+		Hello hello = helloMapper.selectById(1L);
+		hello.setName("orcale");
+		helloMapper.updateById(hello);
+		Assert.assertTrue(("orcale".equals(helloMapper.selectById(1L).getName())));
 	}
 
 	@Test
-	public void testUpdate() throws Exception {
-		Hello hello = helloMapper.getById(1L);
-		hello.setName("orcale");
-		helloMapper.update(hello);
-		Assert.assertTrue(("orcale".equals(helloMapper.getById(1L).getName())));
+	public void testQuery() throws Exception {
+		for (Hello hello : helloMapper.selectAllList()) {
+			System.out.println(hello);
+		}
 	}
 
 	private Hello ofHello(String name, String value) {

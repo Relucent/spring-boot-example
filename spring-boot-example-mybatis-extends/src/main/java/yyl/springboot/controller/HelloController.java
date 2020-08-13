@@ -21,34 +21,14 @@ public class HelloController {
 	private HelloMapper helloMapper;
 
 	// | /hello/
-	@GetMapping("/")
-	public Object findAll() {
-		return helloMapper.findAll();
-	}
-
-	// | /hello/{id}
-	@GetMapping("/{id}")
-	public Object getById(@PathVariable Long id) {
-		return helloMapper.getById(id);
-	}
-
-	// | /hello/
 	@PostMapping("/")
 	public Object save(@RequestBody Hello model) {
 		Long id = model.getId();
 		if (id == null) {
 			helloMapper.insert(model);
 		} else {
-			helloMapper.update(model);
+			helloMapper.updateById(model);
 		}
-		return Boolean.TRUE;
-	}
-
-	// | /hello/{id}
-	@PutMapping(value = "/{id}")
-	public Object update(@PathVariable Long id, @RequestBody Hello model) {
-		model.setId(id);
-		helloMapper.update(model);
 		return Boolean.TRUE;
 	}
 
@@ -58,4 +38,23 @@ public class HelloController {
 		helloMapper.deleteById(id);
 	}
 
+	// | /hello/{id}
+	@PutMapping(value = "/{id}")
+	public Object update(@PathVariable Long id, @RequestBody Hello model) {
+		model.setId(id);
+		helloMapper.updateById(model);
+		return Boolean.TRUE;
+	}
+
+	// | /hello/{id}
+	@GetMapping("/{id}")
+	public Object getById(@PathVariable Long id) {
+		return helloMapper.selectById(id);
+	}
+
+	// | /hello/
+	@GetMapping("/")
+	public Object list() {
+		return helloMapper.selectAllList();
+	}
 }

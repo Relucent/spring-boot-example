@@ -21,18 +21,6 @@ public class HelloController {
 	private HelloService helloService;
 
 	// | /hello/
-	@GetMapping("/")
-	public Object findAll() {
-		return helloService.findAll();
-	}
-
-	// | /hello/{id}
-	@GetMapping("/{id}")
-	public Object getById(@PathVariable Long id) {
-		return helloService.getById(id);
-	}
-
-	// | /hello/
 	@PostMapping("/")
 	public Object save(@RequestBody Hello model) {
 		helloService.save(model);
@@ -52,5 +40,17 @@ public class HelloController {
 	public Object delete(@PathVariable("id") Long id) {
 		helloService.deleteById(id);
 		return Boolean.TRUE;
+	}
+
+	// | /hello/{id}
+	@GetMapping("/{id}")
+	public Object getById(@PathVariable Long id) {
+		return helloService.getById(id);
+	}
+
+	// | /hello/
+	@GetMapping("/")
+	public Object list() {
+		return helloService.getList();
 	}
 }

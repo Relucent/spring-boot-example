@@ -17,14 +17,6 @@ public class HelloService {
 	@Autowired
 	private HelloMapper helloMapper;
 
-	public List<Hello> findAll() {
-		return helloMapper.selectList(Wrappers.emptyWrapper());
-	}
-
-	public Hello getById(Long id) {
-		return helloMapper.selectById(id);
-	}
-
 	public void save(Hello model) {
 		Long id = model.getId();
 		model.setDeleted(0);
@@ -35,12 +27,20 @@ public class HelloService {
 		}
 	}
 
+	public void deleteById(Long id) {
+		helloMapper.deleteById(id);
+	}
+
 	public void updateById(Hello model) {
 		model.setUpdatedAt(new Date());
 		helloMapper.updateById(model);
 	}
 
-	public void deleteById(Long id) {
-		helloMapper.deleteById(id);
+	public Hello getById(Long id) {
+		return helloMapper.selectById(id);
+	}
+
+	public List<Hello> getList() {
+		return helloMapper.selectList(Wrappers.emptyWrapper());
 	}
 }

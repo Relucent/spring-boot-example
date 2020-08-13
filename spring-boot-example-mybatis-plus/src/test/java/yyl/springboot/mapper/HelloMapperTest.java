@@ -16,36 +16,35 @@ import yyl.springboot.entity.Hello;
 @SpringBootTest
 public class HelloMapperTest {
 
-    @Autowired
-    private HelloMapper helloMapper;
+	@Autowired
+	private HelloMapper helloMapper;
 
-    @Before
-    public void before() throws Exception {
-        helloMapper.insert(ofHello("java", "sun"));
-        helloMapper.insert(ofHello("C#", "microsoft"));
-        helloMapper.insert(ofHello("golang", "google"));
-    }
+	@Before
+	public void before() throws Exception {
+		helloMapper.insert(ofHello("java", "sun"));
+		helloMapper.insert(ofHello("C#", "microsoft"));
+		helloMapper.insert(ofHello("golang", "google"));
+	}
 
-    @Test
-    public void testQuery() throws Exception {
-        for (Hello hello : helloMapper.selectList(Wrappers.emptyWrapper())) {
-            System.out.println(hello);
-        }
-    }
+	@Test
+	public void testQuery() throws Exception {
+		for (Hello hello : helloMapper.selectList(Wrappers.emptyWrapper())) {
+			System.out.println(hello);
+		}
+	}
 
-    @Test
-    public void testUpdate() throws Exception {
-        Hello hello = helloMapper.selectById(1L);
-        hello.setName("orcale");
-        helloMapper.updateById(hello);
-        Assert.assertTrue(("orcale".equals(helloMapper.selectById(1L).getName())));
-    }
+	@Test
+	public void testUpdate() throws Exception {
+		Hello hello = helloMapper.selectById(1L);
+		hello.setName("orcale");
+		helloMapper.updateById(hello);
+		Assert.assertTrue(("orcale".equals(helloMapper.selectById(1L).getName())));
+	}
 
-    private Hello ofHello(String name, String value) {
-        Hello hello = new Hello();
-        hello.setName(name);
-        hello.setValue(value);
-        return hello;
-    }
-
+	private Hello ofHello(String name, String value) {
+		Hello hello = new Hello();
+		hello.setName(name);
+		hello.setValue(value);
+		return hello;
+	}
 }

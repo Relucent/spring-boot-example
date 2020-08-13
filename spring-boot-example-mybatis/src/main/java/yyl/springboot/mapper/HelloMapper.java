@@ -8,14 +8,13 @@ import yyl.springboot.entity.Hello;
 @MapperRepository
 public interface HelloMapper {
 
-	List<Hello> findAll();
-
-	Hello getById(Long id);
-
 	void insert(Hello hello);
-
-	void update(Hello hello);
 
 	void deleteById(Long id);
 
+	void updateById(Hello hello);
+
+	Hello selectById(Long id);
+
+	List<Hello> selectAllList();
 }

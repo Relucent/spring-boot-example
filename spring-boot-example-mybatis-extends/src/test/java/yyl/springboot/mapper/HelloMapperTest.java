@@ -26,17 +26,17 @@ public class HelloMapperTest {
 
 	@Test
 	public void testQuery() throws Exception {
-		for (Hello hello : helloMapper.findAll()) {
+		for (Hello hello : helloMapper.selectAllList()) {
 			System.out.println(hello);
 		}
 	}
 
 	@Test
 	public void testUpdate() throws Exception {
-		Hello hello = helloMapper.getById(1L);
+		Hello hello = helloMapper.selectById(1L);
 		hello.setName("orcale");
-		helloMapper.update(hello);
-		Assert.assertTrue(("orcale".equals(helloMapper.getById(1L).getName())));
+		helloMapper.updateById(hello);
+		Assert.assertTrue(("orcale".equals(helloMapper.selectById(1L).getName())));
 	}
 
 	private Hello ofHello(String name, String value) {
@@ -45,5 +45,4 @@ public class HelloMapperTest {
 		hello.setValue(value);
 		return hello;
 	}
-
 }

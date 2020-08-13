@@ -20,18 +20,6 @@ public class Hello2Controller {
 	@Autowired
 	private Hello2Mapper hello2Mapper;
 
-	// | /hello2/
-	@GetMapping("/")
-	public Object findAll() {
-		return hello2Mapper.findAll();
-	}
-
-	// | /hello2/{id}
-	@GetMapping("/{id}")
-	public Object getById(@PathVariable Long id) {
-		return hello2Mapper.getById(id);
-	}
-
 	// | /hello2/{id}
 	@PostMapping("/")
 	public Object save(@RequestBody Hello2 model) {
@@ -39,16 +27,8 @@ public class Hello2Controller {
 		if (id == null) {
 			hello2Mapper.insert(model);
 		} else {
-			hello2Mapper.update(model);
+			hello2Mapper.updateById(model);
 		}
-		return Boolean.TRUE;
-	}
-
-	// | /hello/{id}
-	@PutMapping(value = "/{id}")
-	public Object update(@PathVariable Long id, @RequestBody Hello2 model) {
-		model.setId(id);
-		hello2Mapper.update(model);
 		return Boolean.TRUE;
 	}
 
@@ -58,4 +38,23 @@ public class Hello2Controller {
 		hello2Mapper.deleteById(id);
 	}
 
+	// | /hello/{id}
+	@PutMapping(value = "/{id}")
+	public Object update(@PathVariable Long id, @RequestBody Hello2 model) {
+		model.setId(id);
+		hello2Mapper.updateById(model);
+		return Boolean.TRUE;
+	}
+
+	// | /hello2/{id}
+	@GetMapping("/{id}")
+	public Object getById(@PathVariable Long id) {
+		return hello2Mapper.selectById(id);
+	}
+
+	// | /hello2/
+	@GetMapping("/")
+	public Object list() {
+		return hello2Mapper.selectAllList();
+	}
 }

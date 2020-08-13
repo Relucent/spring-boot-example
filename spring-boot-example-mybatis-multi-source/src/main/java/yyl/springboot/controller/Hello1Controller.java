@@ -21,34 +21,14 @@ public class Hello1Controller {
 	private Hello1Mapper hello1Mapper;
 
 	// | /hello1/
-	@GetMapping("/")
-	public Object findAll() {
-		return hello1Mapper.findAll();
-	}
-
-	// | /hello1/{id}
-	@GetMapping("/{id}")
-	public Object getById(@PathVariable Long id) {
-		return hello1Mapper.getById(id);
-	}
-
-	// | /hello1/
 	@PostMapping("/")
 	public Object save(@RequestBody Hello1 model) {
 		Long id = model.getId();
 		if (id == null) {
 			hello1Mapper.insert(model);
 		} else {
-			hello1Mapper.update(model);
+			hello1Mapper.updateById(model);
 		}
-		return Boolean.TRUE;
-	}
-
-	// | /hello1/{id}
-	@PutMapping(value = "/{id}")
-	public Object update(@PathVariable Long id, @RequestBody Hello1 model) {
-		model.setId(id);
-		hello1Mapper.update(model);
 		return Boolean.TRUE;
 	}
 
@@ -58,4 +38,23 @@ public class Hello1Controller {
 		hello1Mapper.deleteById(id);
 	}
 
+	// | /hello1/{id}
+	@PutMapping(value = "/{id}")
+	public Object update(@PathVariable Long id, @RequestBody Hello1 model) {
+		model.setId(id);
+		hello1Mapper.updateById(model);
+		return Boolean.TRUE;
+	}
+
+	// | /hello1/{id}
+	@GetMapping("/{id}")
+	public Object getById(@PathVariable Long id) {
+		return hello1Mapper.selectById(id);
+	}
+
+	// | /hello1/
+	@GetMapping("/")
+	public Object list() {
+		return hello1Mapper.selectAllList();
+	}
 }

@@ -1,34 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="yyl.springboot.mapper.db2.Hello2Mapper">
-
 	<resultMap id="RESULT_MAP" type="yyl.springboot.entity.db2.Hello2">
 		<id column="id" property="id" jdbcType="BIGINT" />
 		<result column="name" property="name" jdbcType="VARCHAR" />
 		<result column="value" property="value" jdbcType="VARCHAR" />
 	</resultMap>
-
 	<sql id="TABLE">hello2</sql>
-
 	<sql id="COLUMNS">
 		id, name, value
 	</sql>
-
-	<select id="findAll" resultMap="RESULT_MAP">
-		SELECT
-		<include refid="COLUMNS" />
-		FROM
-		<include refid="TABLE" />
-	</select>
-
-	<select id="getById" parameterType="java.lang.Long" resultMap="RESULT_MAP">
-		SELECT
-		<include refid="COLUMNS" />
-		FROM
-		<include refid="TABLE" />
-		WHERE id = #{id}
-	</select>
-
 	<insert id="insert" parameterType="yyl.springboot.entity.db2.Hello2">
 		INSERT INTO
 		<include refid="TABLE" />
@@ -36,8 +17,13 @@
 		VALUES
 		(#{name}, #{value})
 	</insert>
-
-	<update id="update" parameterType="yyl.springboot.entity.db2.Hello2">
+	<delete id="deleteById" parameterType="java.lang.Long">
+		DELETE FROM
+		<include refid="TABLE" />
+		WHERE
+		id =#{id}
+	</delete>
+	<update id="updateById" parameterType="yyl.springboot.entity.db2.Hello2">
 		UPDATE
 		<include refid="TABLE" />
 		<set>
@@ -51,12 +37,17 @@
 		WHERE
 		id = #{id}
 	</update>
-
-	<delete id="deleteById" parameterType="java.lang.Long">
-		DELETE FROM
+	<select id="selectById" parameterType="java.lang.Long" resultMap="RESULT_MAP">
+		SELECT
+		<include refid="COLUMNS" />
+		FROM
 		<include refid="TABLE" />
-		WHERE
-		id =#{id}
-	</delete>
-
+		WHERE id = #{id}
+	</select>
+	<select id="selectAllList" resultMap="RESULT_MAP">
+		SELECT
+		<include refid="COLUMNS" />
+		FROM
+		<include refid="TABLE" />
+	</select>
 </mapper>
