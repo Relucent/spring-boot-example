@@ -30,5 +30,9 @@
 			</tbody>
 		</table>
 	</div>
+	<script th:inline="javascript">
+	 	var date = [[${#__.text('date')}]];
+	 	console.log(date);
+	</script>
 </body>
 </html>
