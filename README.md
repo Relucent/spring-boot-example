@@ -16,6 +16,7 @@ Spring Boot 2.x
 | ----- | ----- |
 | [spring-boot-example-activemq](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-activemq) | Spring Boot 集成 ActiveMQ 消息队列示例|
 | [spring-boot-example-actuator](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-actuator) | Spring Boot Actuator 使用示例|
+| [spring-boot-example-async](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-async) | Spring Boot 异步任务支持示例|
 | [spring-boot-example-autoconfigure-exclude](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-autoconfigure-exclude) | Spring Boot 排除自动配置示例|
 | [spring-boot-example-banner](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-banner) | Spring Boot 定制 Banner 示例|
 | [spring-boot-example-command-line-runner](https://github.com/Relucent/spring-boot-example/tree/master/spring-boot-example-command-line-runner) | CommandLineRunner 使用示例|
