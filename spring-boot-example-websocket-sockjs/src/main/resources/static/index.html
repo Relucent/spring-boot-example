@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SockJS+Stomp</title>
+<script src="./__/sockjs/1.1.4/sockjs.min.js"></script>
+<script src="./__/stomp/2.3.3/stomp.min.js"></script>
+</head>
+<body>
+	<div id="vm">
+		<button id="connect">connect</button>
+		<button id="disconnect">disconnect</button>
+		<button id="clear">clear</button>
+		<div>
+			<textarea id="message" style="height: 300px; width: 80%; overflow-y: scroll; background: #333; color: #fff; padding: 10px;"></textarea>
+		</div>
+	</div>
+</body>
+<script>
+	var EL = {
+		connect : document.querySelector('#connect'),
+		disconnect : document.querySelector('#disconnect'),
+		clear : document.querySelector('#clear'),
+		message : document.querySelector('#message')
+	}, Option = {
+		url : 'http://localhost:8080/websocket',
+		headers : {},
+		topic : '/topic/time'
+	}, Engine = {
+		client : null
+	}, FN = {
+		connect : function() {
+			FN.disconnect();
+			var socket = new SockJS(Option.url);
+			var client = Engine.client = Stomp.over(socket);
+			//client.debug = null
+			client.connect(Option.headers, function() {
+				client.subscribe(Option.topic, function(event) {
+					EL.message.value = EL.message.value + event.body + '\n';
+					EL.message.scrollTop = EL.message.scrollHeight
+				});
+			}, function(e) {
+				Engine.client = null;
+			});
+		},
+		disconnect : function() {
+			if (Engine.client != null) {
+				Engine.client.disconnect();
+				Engine.client = null;
+			}
+		},
+		clear : function() {
+			EL.message.value = '';
+		}
+	}
+	EL.connect.addEventListener('click', function() {
+		FN.connect();
+	}, false);
+	EL.disconnect.addEventListener('click', function() {
+		FN.disconnect();
+	}, false);
+	EL.clear.addEventListener('click', function() {
+		FN.clear();
+	}, false);
+</script>
+</body>
+</html>
