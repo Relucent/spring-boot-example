@@ -8,7 +8,7 @@
 		<version>${revision}</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>spring-boot-example-websocket-sockjs</artifactId>
+	<artifactId>spring-boot-example-websocket-stomp</artifactId>
 
 	<name>spring-boot-example-webflux</name>
 	<description>Demo project for Spring Boot</description>

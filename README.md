@@ -49,3 +49,4 @@ Spring Boot 2.x
 | [spring-boot-example-web](spring-boot-example-web) | SpringBoot1.x示例|
 | [spring-boot-example-webflux](spring-boot-example-webflux) | Spring Boot 集成 Webflux 示例|
 | [spring-boot-example-websocket](spring-boot-example-websocket) | Spring Boot 集成 WebSocket示例|
+| [spring-boot-example-websocket-stomp](spring-boot-example-websocket-stomp) | Spring Boot 集成 WebSocket+Stomp示例|
