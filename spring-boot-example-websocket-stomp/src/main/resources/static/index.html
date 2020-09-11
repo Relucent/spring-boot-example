@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>SockJS+Stomp</title>
-<script src="./__/sockjs/1.5.0/sockjs.min.js"></script>
-<script src="./__/stomp/2.3.3/stomp.min.js"></script>
+<script src="./__/import.js"></script>
 <style type="text/css">
 html, body, .container {
 	height: 100%;
@@ -13,16 +12,45 @@ html, body, .container {
 #console {
 	width: 80%;
 	margin-top: 10px;
-	height: calc(100% - 200px);
+	height: calc(100% - 300px);
 	padding: 10px;
 	overflow-y: scroll;
 	border: #ccccff solid 1px;
 }
 
-#input {
+#message {
 	border: #ccccff solid 1px;
-	width: 200px;
-	height: 22px;
+	width: 300px;
+	height: 50px;
+}
+
+dl {
+	padding-left: 14px;
+}
+
+dt {
+	float: left;
+	font-weight: bold;
+	padding: 12px 0 4px;
+	width: 90px;
+}
+
+dd {
+	text-align: left;
+	height: auto;
+	padding: 8px 0;
+}
+
+input, select {
+	vertical-align: middle;
+	color: #333333;
+	background: #ffffff;
+	border: #ccccff solid 1px;
+}
+
+textarea {
+	line-height: 150%;
+	overflow: auto
 }
 
 button {
@@ -34,14 +62,34 @@ button {
 <body>
 	<div class="container">
 		<div>
+			<!--  -->
+			<label> User：<input type="text" id="from" value="root" /></label>
+			<!--  -->
+			<label> Topic :<input id="topic" type="text" value="hello"></label>
 			<button id="connect">connect</button>
 			<button id="disconnect">disconnect</button>
 			<button id="clear">clear</button>
 		</div>
 		<textarea id="console" readonly="readonly"></textarea>
 		<div>
-			<input id="input" type="text">
-			<button id="send" disabled="disabled">send</button>
+			<dl>
+				<dt>
+					<label for="message">MESSAGE: </label>
+				</dt>
+				<dd>
+					<textarea id="message"></textarea>
+				</dd>
+				<dt>
+					<label for="to"> TO :</label>
+				</dt>
+				<dd>
+					<input id="to" type="text" value="*">
+				</dd>
+				<dt></dt>
+				<dd>
+					<button id="send" disabled="disabled">send</button>
+				</dd>
+			</dl>
 		</div>
 	</div>
 </body>
@@ -51,14 +99,16 @@ button {
 		disconnect : document.querySelector('#disconnect'),
 		clear : document.querySelector('#clear'),
 		console : document.querySelector('#console'),
-		input : document.querySelector('#input'),
+		message : document.querySelector('#message'),
+		topic : document.querySelector('#topic'),
+		from : document.querySelector('#from'),
+		to : document.querySelector('#to'),
 		send : document.querySelector('#send')
 	}, Option = {
-		url : 'http://localhost:8080/websocket',
+		url : __.ctx + '/ws',
 		headers : {
 			'x-token' : 'root'
-		},
-		topic : '/topic/hello'
+		}
 	}, Engine = {
 		client : null
 	}, FN = {
@@ -66,13 +116,21 @@ button {
 			FN.disconnect();
 			var socket = new SockJS(Option.url);
 			var client = Engine.client = Stomp.over(socket);
+			var topic = EL.topic.value;
+			var from = EL.from.value;
+			Option.headers['x-token'] = from;
 			//client.debug = null
 			client.connect(Option.headers, function() {
-				client.subscribe(Option.topic, function(event) {
+
+				var consume = function(event) {
 					EL.console.value = EL.console.value + event.body + '\n';
 					EL.console.scrollTop = EL.console.scrollHeight
-				}, Option.headers);
+				};
+				client.subscribe('/' + topic, consume, Option.headers);
+				client.subscribe('/user/' + from + '/' + topic, consume, Option.headers);
 				EL.send.disabled = false;
+				EL.from.topic = true;
+				EL.from.disabled = true;
 			}, function(e) {
 				Engine.client = null;
 			});
@@ -81,20 +139,23 @@ button {
 			if (Engine.client != null) {
 				Engine.client.disconnect();
 				Engine.client = null;
-				EL.send.disabled = true;
+				EL.send.disabled = true
+				EL.from.topic = false;
+				EL.from.disabled = false;
 			}
 		},
 		clear : function() {
 			EL.console.value = '';
 		},
-		send : function(message) {
-			if (Engine.client != null || !message) {
-				Engine.client.send('/topic/hello-send', Option.headers, JSON.stringify({
-					'message' : message
-				}));
+		send : function(payload) {
+			if (Engine.client != null || !payload) {
+				Engine.client.send('/~', Option.headers, JSON.stringify(payload));
 			}
 		}
 	}
+
+	topic = null, message = 11111, to = null, from = null
+
 	EL.send.disabled = true;
 	EL.connect.addEventListener('click', function() {
 		FN.connect();
@@ -106,7 +167,12 @@ button {
 		FN.clear();
 	}, false);
 	EL.send.addEventListener('click', function() {
-		FN.send(EL.input.value);
+		var payload = {};
+		payload.topic = EL.topic.value;
+		payload.message = EL.message.value;
+		payload.from = EL.from.value;
+		payload.to = EL.to.value;
+		FN.send(payload);
 	}, false);
 </script>
 </body>
