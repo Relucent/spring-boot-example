@@ -112,6 +112,10 @@ button {
 	}, Engine = {
 		client : null
 	}, FN = {
+		consume : function(event) {
+			EL.console.value = EL.console.value + event.body + '\n';
+			EL.console.scrollTop = EL.console.scrollHeight
+		},
 		connect : function() {
 			FN.disconnect();
 			var socket = new SockJS(Option.url);
@@ -121,15 +125,10 @@ button {
 			Option.headers['x-token'] = from;
 			//client.debug = null
 			client.connect(Option.headers, function() {
-
-				var consume = function(event) {
-					EL.console.value = EL.console.value + event.body + '\n';
-					EL.console.scrollTop = EL.console.scrollHeight
-				};
-				client.subscribe('/' + topic, consume, Option.headers);
-				client.subscribe('/user/' + from + '/' + topic, consume, Option.headers);
+				client.subscribe('/' + topic, FN.consume, Option.headers);
+				client.subscribe('/user/' + from + '/' + topic, FN.consume, Option.headers);
 				EL.send.disabled = false;
-				EL.from.topic = true;
+				EL.topic.disabled = true;
 				EL.from.disabled = true;
 			}, function(e) {
 				Engine.client = null;
@@ -138,11 +137,11 @@ button {
 		disconnect : function() {
 			if (Engine.client != null) {
 				Engine.client.disconnect();
-				Engine.client = null;
-				EL.send.disabled = true
-				EL.from.topic = false;
-				EL.from.disabled = false;
 			}
+			Engine.client = null;
+			EL.send.disabled = true
+			EL.topic.disabled = false;
+			EL.from.disabled = false;
 		},
 		clear : function() {
 			EL.console.value = '';
@@ -153,9 +152,6 @@ button {
 			}
 		}
 	}
-
-	topic = null, message = 11111, to = null, from = null
-
 	EL.send.disabled = true;
 	EL.connect.addEventListener('click', function() {
 		FN.connect();
