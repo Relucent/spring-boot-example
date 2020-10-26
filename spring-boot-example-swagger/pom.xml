@@ -14,7 +14,8 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<swagger.version>2.9.2</swagger.version>
+		<swagger.version>3.0.0</swagger.version>
+		<spring-plugin.version>2.0.0.RELEASE</spring-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -26,12 +27,7 @@
 		<!-- swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
+			<artifactId>springfox-boot-starter</artifactId>
 			<version>${swagger.version}</version>
 		</dependency>
 		<!-- _test -->

@@ -3,13 +3,13 @@ package yyl.springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 
-@EnableSwagger2
+@EnableOpenApi
 @SpringBootApplication
 public class SwaggerApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(SwaggerApplication.class, args);
-		System.out.println("startup success");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SwaggerApplication.class, args);
+        System.out.println("startup success");
+    }
 }
