@@ -106,9 +106,8 @@ button {
 		send : document.querySelector('#send')
 	}, Option = {
 		url : __.ctx + '/ws',
-		headers : {
-			'x-token' : 'root'
-		}
+		
+	headers : {}
 	}, Engine = {
 		client : null
 	}, FN = {
@@ -116,13 +115,19 @@ button {
 			EL.console.value = EL.console.value + event.body + '\n';
 			EL.console.scrollTop = EL.console.scrollHeight
 		},
+		token : function(token) {
+			document.cookie = 'Access-Token=' + escape(token) + ";expires=" + new Date(new Date().getTime() + 15000).toGMTString();
+		},
 		connect : function() {
 			FN.disconnect();
-			var socket = new SockJS(Option.url);
-			var client = Engine.client = Stomp.over(socket);
+
 			var topic = EL.topic.value;
 			var from = EL.from.value;
-			Option.headers['x-token'] = from;
+
+			FN.token(from);
+
+			var socket = new SockJS(Option.url);
+			var client = Engine.client = Stomp.over(socket);
 			//client.debug = null
 			client.connect(Option.headers, function() {
 				client.subscribe('/' + topic, FN.consume, Option.headers);

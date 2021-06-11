@@ -1,9 +1,11 @@
 package yyl.springboot.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
 import yyl.springboot.model.MessagePayload;
@@ -21,10 +23,13 @@ public class MessagingController {
     /**
      * 接收客户端的消息
      * @param payload 消息载体
-     * @param token 消息票据(header: x-token)
+     * @param accessor 协议头访问器
      */
     @MessageMapping("/~")
-    public void accept(@Payload MessagePayload payload, @Header("x-token") String token) {
+    public void send(@Payload MessagePayload payload, StompHeaderAccessor accessor) {
+        Principal principal = accessor.getUser();
+        String sessionId = accessor.getSessionId();
+        System.out.println("send/~ sessionId:" + sessionId + ", principal:" + principal + "\n");
         messagingService.send(payload);
     }
 }
