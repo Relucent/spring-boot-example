@@ -57,7 +57,7 @@ public class MessageController {
 		if (result.hasErrors()) {
 			model.addAttribute("message", message);
 			model.addAttribute("formErrors", result.getAllErrors());
-			return "from";
+			return "form";
 		}
 		message = messageService.save(message);
 		redirect.addFlashAttribute("globalMessage", "Successfully created a new message");

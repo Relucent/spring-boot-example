@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 
 @SuppressWarnings("serial")
-@Document(indexName = "demo", type = "hello", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "demo")
 public class Hello implements Serializable {
 
 	@Id

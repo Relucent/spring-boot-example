@@ -11,7 +11,7 @@ public class HelloLoggerRunnerTests {
 
     @Test
     public void contextTest() {
-        System.out.println("Hello Spring Boot 2.0!");
+        System.out.println("Hello Spring Boot 2.7!");
     }
 
 }

@@ -1,24 +1,25 @@
 package yyl.springboot.mapper;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import yyl.springboot.entity.db1.Hello1;
 import yyl.springboot.mapper.db1.Hello1Mapper;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class Hello1MapperTest {
 
 	@Autowired
 	private Hello1Mapper hello1Mapper;
 
-	@Before
+	@BeforeEach
 	public void before() throws Exception {
 		hello1Mapper.insert(ofHello("java", "sun"));
 		hello1Mapper.insert(ofHello("C#", "microsoft"));
@@ -37,7 +38,7 @@ public class Hello1MapperTest {
 		Hello1 hello = hello1Mapper.selectById(1L);
 		hello.setName("orcale");
 		hello1Mapper.updateById(hello);
-		Assert.assertTrue(("orcale".equals(hello1Mapper.selectById(1L).getName())));
+		assertTrue(("orcale".equals(hello1Mapper.selectById(1L).getName())));
 	}
 
 	private Hello1 ofHello(String name, String value) {

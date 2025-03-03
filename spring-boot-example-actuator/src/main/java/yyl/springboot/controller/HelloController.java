@@ -11,6 +11,6 @@ public class HelloController {
 
 	@RequestMapping("/hello")
 	public String index() {
-		return "Hello Spring Boot 2.0!";
+		return "Hello Spring Boot 2.7!";
 	}
 }

@@ -1,23 +1,23 @@
 package yyl.springboot.repository;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import yyl.springboot.model.Hello;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class HelloRepositoryTests {
 
 	@Autowired
 	private HelloRepository repository;
 
-	@Before
+	@BeforeEach
 	public void before() {
 		repository.save(new Hello("Mercury", "水星"));
 		repository.save(new Hello("Venus", "金星"));
@@ -53,7 +53,7 @@ public class HelloRepositoryTests {
 		}
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		repository.deleteAll();
 	}

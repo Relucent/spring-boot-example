@@ -1,23 +1,24 @@
 package yyl.springboot.mapper;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import yyl.springboot.entity.Hello;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest
 public class HelloMapperTest {
 
 	@Autowired
 	private HelloMapper helloMapper;
 
-	@Before
+	@BeforeEach
 	public void before() throws Exception {
 		helloMapper.insert(ofHello("java", "sun"));
 		helloMapper.insert(ofHello("C#", "microsoft"));
@@ -29,7 +30,7 @@ public class HelloMapperTest {
 		Hello hello = helloMapper.selectById(1L);
 		hello.setName("orcale");
 		helloMapper.updateById(hello);
-		Assert.assertTrue(("orcale".equals(helloMapper.selectById(1L).getName())));
+		assertTrue(("orcale".equals(helloMapper.selectById(1L).getName())));
 	}
 
 	@Test

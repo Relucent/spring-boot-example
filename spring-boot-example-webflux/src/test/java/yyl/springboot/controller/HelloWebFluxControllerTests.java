@@ -1,25 +1,25 @@
 package yyl.springboot.controller;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockServletContext;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = MockServletContext.class)
 public class HelloWebFluxControllerTests {
 
 	private MockMvc mvc;
 
-	@Before
+	@BeforeEach
 	public void setUp() throws Exception {
 		mvc = MockMvcBuilders.standaloneSetup(new HelloWebFluxController()).build();
 	}
@@ -41,7 +41,7 @@ public class HelloWebFluxControllerTests {
 
 	@Test
 	public void streamTest() throws Exception {
-		perform("/stream", MediaType.APPLICATION_STREAM_JSON);
+		perform("/stream", MediaType.APPLICATION_NDJSON);
 	}
 
 	private void perform(String uri, MediaType mediaType) throws Exception {

@@ -30,7 +30,7 @@ public class HelloWebFluxController {
 		return Flux.just("hello", "webflux", "spring", "boot");
 	}
 
-	@GetMapping(path = "/stream", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
+	@GetMapping(path = "/stream", produces = MediaType.APPLICATION_NDJSON_VALUE)
 	public Flux<String> stream() {
 		return Flux.range(1, 9).delayElements(Duration.ofSeconds(1)).map(String::valueOf);
 	}

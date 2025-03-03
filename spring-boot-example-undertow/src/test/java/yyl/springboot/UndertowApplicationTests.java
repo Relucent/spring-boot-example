@@ -10,6 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UndertowApplicationTests {
 	@Test
 	public void contextLoads() {
-		System.out.println("Hello Spring Boot 2.0!");
+		System.out.println("Hello Spring Boot 2.7!");
 	}
 }
