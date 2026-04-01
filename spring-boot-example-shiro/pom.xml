@@ -14,7 +14,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<shiro.version>1.7.1</shiro.version>
+		<shiro.version>2.1.0</shiro.version>
 	</properties>
 
 	<dependencies>
